@@ -41,6 +41,49 @@
       padding: 28px 18px 56px;
     }
 
+    .notes-nav {
+      position: sticky;
+      top: 8px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border: 1px solid #c9d8ef;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 25px rgba(8, 34, 62, 0.08);
+    }
+
+    .notes-nav-title {
+      font-weight: 800;
+      color: #0f3f7a;
+      font-size: 0.96rem;
+    }
+
+    .notes-nav-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .notes-nav-btn {
+      cursor: pointer;
+      border: 1px solid #6aa6ea;
+      background: #f5faff;
+      color: #11437d;
+      border-radius: 9px;
+      padding: 6px 10px;
+      font-weight: 700;
+    }
+
+    .notes-nav-btn:hover {
+      background: #e6f2ff;
+    }
+
     .hero {
       background: linear-gradient(130deg, #052d52, #0c6170);
       color: #f2fbff;
@@ -93,6 +136,38 @@
     h2 {
       margin: 0 0 10px;
       font-size: clamp(1.12rem, 1.7vw, 1.5rem);
+    }
+
+    details {
+      display: block;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      margin: 0 0 10px;
+      padding-right: 26px;
+      position: relative;
+      font-size: clamp(1.12rem, 1.7vw, 1.5rem);
+      font-weight: 700;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #0f3f7a;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    details[open] > summary::after {
+      content: "-";
     }
 
     h3 {
@@ -266,7 +341,187 @@
       color: var(--muted);
     }
 
+    .compare-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 8px;
+    }
+
+    .compare-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      background: #fbfdff;
+    }
+
+    .timeline-wrap {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .timeline-box {
+      border: 1px solid #c9d8ef;
+      border-radius: 12px;
+      padding: 10px;
+      background: #f8fbff;
+    }
+
+    .timeline-title {
+      margin: 0 0 8px;
+      color: #0f3f7a;
+      font-weight: 700;
+    }
+
+    .lane-row {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 8px;
+      align-items: center;
+      margin: 6px 0;
+    }
+
+    .lane-label {
+      font-size: 0.82rem;
+      color: #304866;
+      font-weight: 700;
+    }
+
+    .lane-track {
+      min-height: 34px;
+      border: 1px solid #bcd0ec;
+      border-radius: 8px;
+      display: flex;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 2px 4px;
+      border-right: 1px solid rgba(24, 45, 72, 0.16);
+    }
+
+    .seg:last-child {
+      border-right: none;
+    }
+
+    .seg-parse {
+      background: #e8f2ff;
+      color: #1f4f83;
+    }
+
+    .seg-pause {
+      background: #ffe9e5;
+      color: #842f28;
+    }
+
+    .seg-dl {
+      background: #fff5db;
+      color: #7a5a08;
+    }
+
+    .seg-exe {
+      background: #ddf8e7;
+      color: #0d5e32;
+    }
+
+    .seg-idle {
+      background: #f2f4f9;
+      color: #6a7484;
+    }
+
+    .w-10 { width: 10%; }
+    .w-16 { width: 16%; }
+    .w-18 { width: 18%; }
+    .w-22 { width: 22%; }
+    .w-15 { width: 15%; }
+    .w-20 { width: 20%; }
+    .w-25 { width: 25%; }
+    .w-30 { width: 30%; }
+    .w-32 { width: 32%; }
+    .w-35 { width: 35%; }
+    .w-40 { width: 40%; }
+    .w-45 { width: 45%; }
+    .w-50 { width: 50%; }
+    .w-52 { width: 52%; }
+    .w-55 { width: 55%; }
+    .w-60 { width: 60%; }
+    .w-65 { width: 65%; }
+    .w-70 { width: 70%; }
+    .w-75 { width: 75%; }
+    .w-80 { width: 80%; }
+
+    .mode-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .mode-btn {
+      cursor: pointer;
+      border: 1px solid #6aa6ea;
+      background: #f5faff;
+      color: #11437d;
+      border-radius: 9px;
+      padding: 7px 10px;
+      font-weight: 700;
+    }
+
+    .mode-btn:hover {
+      background: #e6f2ff;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 8px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 0.93rem;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .compare-table th {
+      background: #edf3ff;
+      color: #18385f;
+    }
+
+    .ok-cell {
+      color: #0a7a3d;
+      font-weight: 700;
+    }
+
+    .no-cell {
+      color: #a61b1b;
+      font-weight: 700;
+    }
+
     @media (max-width: 640px) {
+      .notes-nav {
+        position: static;
+      }
+
       .hero {
         padding: 18px 15px;
       }
@@ -279,6 +534,14 @@
 </head>
 <body>
   <div class="wrap">
+    <nav class="notes-nav">
+      <div class="notes-nav-title">Topics Controls</div>
+      <div class="notes-nav-actions">
+        <button class="notes-nav-btn" id="expandAllTopics" type="button">Expand All</button>
+        <button class="notes-nav-btn" id="collapseAllTopics" type="button">Collapse All</button>
+      </div>
+    </nav>
+
     <section class="hero">
       <h1>JavaScript Basics Notes (Interview Friendly)</h1>
       <p>
@@ -297,7 +560,8 @@
 
     <main class="grid">
       <section class="card">
-        <h2>1) JavaScript - Definition</h2>
+        <details>
+          <summary>1) JavaScript - Definition</summary>
         <p><strong>JavaScript</strong> is a high-level, lightweight, dynamically typed scripting language used to build interactive web pages and applications.</p>
         <ul>
           <li><strong>High-level:</strong> You write human-friendly code; browser/engine handles low-level memory details.</li>
@@ -305,6 +569,22 @@
           <li><strong>Loosely/weakly typed:</strong> Automatic type conversion can happen (for example <code>"5" + 2</code> gives <code>"52"</code>).</li>
           <li><strong>Interpreted/JIT optimized:</strong> JS engines execute quickly using Just-In-Time compilation techniques.</li>
         </ul>
+
+        <h3>History of JavaScript</h3>
+        <ul>
+          <li><strong>1995:</strong> JavaScript was created by <strong>Brendan Eich</strong> at <strong>Netscape</strong>.</li>
+          <li>Its early internal name was <strong>Mocha</strong>.</li>
+          <li>Then it was renamed to <strong>LiveScript</strong>.</li>
+          <li>Later it was officially renamed to <strong>JavaScript</strong>.</li>
+          <li><strong>1997:</strong> JavaScript was standardized as <strong>ECMAScript</strong>.</li>
+          <li><strong>ECMA</strong> refers to the standards organization (Ecma International) and <strong>TC39</strong> handles JavaScript language updates.</li>
+          <li><strong>ES6 (ES2015)</strong> was the major modern milestone release.</li>
+          <li>After that, ECMAScript moved to yearly updates (ES2016, ES2017, and onward).</li>
+        </ul>
+
+        <div class="note">
+          <strong>Interview line:</strong> "JavaScript was created in 1995 by Brendan Eich at Netscape, then standardized as ECMAScript in 1997."
+        </div>
 
         <div class="answer">
           <strong>Interview 20-second answer:</strong>
@@ -316,10 +596,12 @@
           <strong>Memory Trick:</strong> <code>H-D-L-I</code>
           = <strong>H</strong>igh-level, <strong>D</strong>ynamic, <strong>L</strong>ightweight, <strong>I</strong>nteractive.
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>2) Scripting Language vs Programming Language</h2>
+        <details>
+          <summary>2) Scripting Language vs Programming Language</summary>
         <p>Your note says: <em>all scripting languages are programming languages, but all programming languages are not scripting.</em> That is correct in practical interview language.</p>
         <div class="two-col">
           <div>
@@ -339,10 +621,12 @@
             </ul>
           </div>
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>3) Features of JavaScript</h2>
+        <details>
+          <summary>3) Features of JavaScript</summary>
         <ul class="quick-list">
           <li>Platform independent (runs on Windows, Linux, macOS via browser/runtime).</li>
           <li>Free and open standards (ECMAScript specification).</li>
@@ -362,10 +646,12 @@
           <strong>Memory Word:</strong> <code>P-O-W-E-R S-T-A-C-K</code>
           = Platform independent, Open, Web interactivity, Easy integration, Reusable libraries, Server + client, Tooling, Async, Community, Knowledge demand.
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>4) Limitation of JavaScript (Important Clarification)</h2>
+        <details>
+          <summary>4) Limitation of JavaScript (Important Clarification)</summary>
         <p>Your note says client-side JavaScript has security issues and cannot build networking applications.</p>
         <div class="warning">
           Better interview-safe statement:
@@ -379,10 +665,12 @@
           <li>Single-threaded model can block UI if heavy tasks are done without workers.</li>
           <li>Different browser behaviors can still cause compatibility issues.</li>
         </ul>
+        </details>
       </section>
 
       <section class="card">
-        <h2>5) Characteristics of JavaScript</h2>
+        <details>
+          <summary>5) Characteristics of JavaScript</summary>
         <ul>
           <li><strong>Single-threaded by default:</strong> One call stack executes one task at a time.</li>
           <li><strong>Synchronous core:</strong> Statements run top to bottom unless async APIs are used.</li>
@@ -409,10 +697,12 @@
             Pushes queued tasks to call stack when stack is free.
           </div>
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>6) How to Run JavaScript</h2>
+        <details>
+          <summary>6) How to Run JavaScript</summary>
         <div class="two-col">
           <div>
             <h3>Inside Browser</h3>
@@ -428,10 +718,12 @@
             <p class="small">Example: <code>node app.js</code></p>
           </div>
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>7) Ways to Add JavaScript into HTML</h2>
+        <details>
+          <summary>7) Ways to Add JavaScript into HTML</summary>
         <p>As in your note, the two most used ways are <strong>Internal JS</strong> and <strong>External JS</strong>.</p>
 
         <h3>1. Internal JavaScript</h3>
@@ -443,14 +735,19 @@
         <pre><code>&lt;script src="app.js"&gt;&lt;/script&gt;</code></pre>
 
         <div class="note">
-          Keep script just before <code>&lt;/body&gt;</code> for better page loading,
-          or use <code>defer</code> in head: <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code>.
+          <strong>Best placement (interview-correct):</strong>
+          Put script just before <code>&lt;/body&gt;</code> so HTML loads first and DOM elements are available.
+          For external files, a modern equivalent is
+          <code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code> inside <code>&lt;head&gt;</code>.
+          Avoid normal blocking script in <code>&lt;head&gt;</code> without <code>defer</code>/<code>async</code>.
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>8) Diagram - HTML Structure + Script Placement</h2>
-        <p>This matches your diagram idea and helps in memory.</p>
+        <details>
+          <summary>8) Diagram - HTML Structure + Script Placement</summary>
+        <p>Correct DOM-tree idea: <code>html</code> has only two direct children: <code>head</code> and <code>body</code>.</p>
 
         <div class="tree">
           <div class="level">
@@ -460,25 +757,155 @@
           <div class="level">
             <div class="node">head</div>
             <div class="node">body</div>
-            <div class="node">script</div>
           </div>
           <div class="arrow">&#8595;</div>
           <div class="level">
             <div class="node">meta</div>
             <div class="node">title</div>
+            <div class="node">script[defer] (optional)</div>
             <div class="node">h1</div>
             <div class="node">button#demo</div>
+            <div class="node">script (best at end)</div>
+          </div>
+        </div>
+
+        <div class="answer">
+          <strong>Important:</strong> <code>&lt;script&gt;</code> is placed inside <code>&lt;head&gt;</code> or
+          inside <code>&lt;body&gt;</code>. It is not a third direct child of <code>&lt;html&gt;</code>.
+        </div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>H-B only</code>
+          = <strong>H</strong>ead + <strong>B</strong>ody are direct children of html.
+          Script lives inside Head (with <code>defer</code>) or at end of Body.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>8.1) External JavaScript in <code>&lt;head&gt;</code>: Normal vs <code>async</code> vs <code>defer</code></summary>
+        <p>This is the exact topic from your new screenshot. These three tags are correct:</p>
+
+        <pre><code>&lt;script src="./external.js"&gt;&lt;/script&gt;
+&lt;script src="./external.js" async&gt;&lt;/script&gt;
+&lt;script src="./external.js" defer&gt;&lt;/script&gt;</code></pre>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h3>Normal <code>script</code></h3>
+            <ul>
+              <li>HTML parsing stops when script tag is reached.</li>
+              <li>Browser downloads JS, then executes JS immediately.</li>
+              <li>After execution, HTML parsing resumes.</li>
+              <li>Can delay page rendering if file is large.</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <h3><code>async</code></h3>
+            <ul>
+              <li>Download happens in parallel with HTML parsing.</li>
+              <li>Executes as soon as download completes (parsing pauses then).</li>
+              <li>Execution order is not guaranteed for multiple async scripts.</li>
+              <li>Best for independent scripts like analytics/ads.</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <h3><code>defer</code></h3>
+            <ul>
+              <li>Download happens in parallel with HTML parsing.</li>
+              <li>Execution waits until HTML parsing is complete.</li>
+              <li>Order is preserved among multiple deferred scripts.</li>
+              <li>Best default choice for app scripts that touch DOM.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Timing Diagram (Easy to Remember)</h3>
+        <div class="timeline-wrap">
+          <div class="timeline-box">
+            <p class="timeline-title">A) Normal <code>&lt;script src="external.js"&gt;</code></p>
+            <div class="lane-row">
+              <div class="lane-label">HTML Parser</div>
+              <div class="lane-track">
+                <span class="seg seg-parse w-35">parse</span>
+                <span class="seg seg-pause w-40">paused</span>
+                <span class="seg seg-parse w-25">parse</span>
+              </div>
+            </div>
+            <div class="lane-row">
+              <div class="lane-label">JS File</div>
+              <div class="lane-track">
+                <span class="seg seg-idle w-35">idle</span>
+                <span class="seg seg-dl w-22">download</span>
+                <span class="seg seg-exe w-18">execute</span>
+                <span class="seg seg-idle w-25">idle</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-box">
+            <p class="timeline-title">B) <code>async</code> <code>&lt;script src="external.js" async&gt;</code></p>
+            <div class="lane-row">
+              <div class="lane-label">HTML Parser</div>
+              <div class="lane-track">
+                <span class="seg seg-parse w-52">parse</span>
+                <span class="seg seg-pause w-16">paused</span>
+                <span class="seg seg-parse w-32">parse</span>
+              </div>
+            </div>
+            <div class="lane-row">
+              <div class="lane-label">JS File</div>
+              <div class="lane-track">
+                <span class="seg seg-dl w-52">download</span>
+                <span class="seg seg-exe w-16">execute now</span>
+                <span class="seg seg-idle w-32">idle</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-box">
+            <p class="timeline-title">C) <code>defer</code> <code>&lt;script src="external.js" defer&gt;</code></p>
+            <div class="lane-row">
+              <div class="lane-label">HTML Parser</div>
+              <div class="lane-track">
+                <span class="seg seg-parse w-80">parse until end</span>
+                <span class="seg seg-idle w-20">done</span>
+              </div>
+            </div>
+            <div class="lane-row">
+              <div class="lane-label">JS File</div>
+              <div class="lane-track">
+                <span class="seg seg-dl w-55">download</span>
+                <span class="seg seg-idle w-25">wait</span>
+                <span class="seg seg-exe w-20">execute after parse</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="memory">
-          <strong>Memory Trick:</strong> <code>H-B-S</code>
-          = <strong>H</strong>ead for metadata, <strong>B</strong>ody for visible content, <strong>S</strong>cript for behavior.
+          <strong>Memory Trick:</strong> <code>A = Anytime</code> (executes when ready), <code>D = Done parsing</code> (executes after HTML parse).
         </div>
+
+        <div class="note">
+          <strong>Interview best-practice answer:</strong> If script depends on DOM, use <code>defer</code> in head
+          or place script before <code>&lt;/body&gt;</code>. Prefer <code>async</code> for independent scripts.
+        </div>
+
+        <h3>Expected Output (Execution Order)</h3>
+        <div class="mode-buttons">
+          <button class="mode-btn" id="showNormalMode">Normal</button>
+          <button class="mode-btn" id="showAsyncMode">Async</button>
+          <button class="mode-btn" id="showDeferMode">Defer</button>
+        </div>
+        <div class="output" id="scriptModeOutput">Click a mode button to see parse/download/execute order.</div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>9) Example from Your Notes: <code>console.log</code>, <code>document.write</code>, <code>document.writeln</code></h2>
+        <details>
+          <summary>9) Example from Your Notes: <code>console.log</code>, <code>document.write</code>, <code>document.writeln</code></summary>
         <div class="two-col">
           <div>
             <h3>Code</h3>
@@ -498,10 +925,12 @@ document.write("JavaScript");</code></pre>
             <div class="output" id="writeOutput">Click "Show Output"</div>
           </div>
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>10) DOM Example from Your Diagram: <code>getElementById</code></h2>
+        <details>
+          <summary>10) DOM Example from Your Diagram: <code>getElementById</code></summary>
         <p>Below button has id <code>demo</code>. We select it using JavaScript and show result.</p>
 
         <div class="two-col">
@@ -516,17 +945,653 @@ console.log(demo);</code></pre>
             <div class="output" id="domOutput">Click "Run DOM Example"</div>
           </div>
         </div>
+        </details>
       </section>
 
       <section class="card">
-        <h2>11) Interview Quick Revision</h2>
+        <details>
+          <summary>11) Click Event from Your Screenshot: <code>addEventListener</code></summary>
+        <p>This is the same idea from your editor screenshot: select the button and handle click event.</p>
+
+        <div class="two-col">
+          <div>
+            <h3>Code Pattern</h3>
+            <pre><code>let demo = document.getElementById("demo");
+console.log(demo);
+
+demo.addEventListener("click", (e) => {
+  console.log("ExcelR");
+});</code></pre>
+            <div class="note">
+              <strong>What is <code>e</code>?</strong> It is the event object. It gives details like
+              event type, target element, mouse position, key pressed, etc.
+            </div>
+            <div class="memory">
+              <strong>Memory Trick:</strong> <code>S-L-H</code> = <strong>S</strong>elect element,
+              <strong>L</strong>isten event, <strong>H</strong>andle action.
+            </div>
+          </div>
+          <div>
+            <h3>Live Output (Click the same <code>demo</code> button above)</h3>
+            <div class="output" id="eventOutput">Click the "click" button in section 10</div>
+          </div>
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>12) Tokens and Keywords</summary>
+        <p><strong>Token</strong> is the smallest meaningful unit of a programming language. JavaScript code is made of multiple token types.</p>
+        <ul>
+          <li><strong>Keywords:</strong> Reserved words with predefined meaning (<code>if</code>, <code>else</code>, <code>var</code>, <code>let</code>, <code>const</code>, <code>function</code>, <code>class</code>).</li>
+          <li><strong>Identifiers:</strong> Names given by developers (<code>userName</code>, <code>totalPrice</code>).</li>
+          <li><strong>Literals:</strong> Fixed values (<code>10</code>, <code>"hello"</code>, <code>true</code>).</li>
+          <li><strong>Operators:</strong> Symbols for operations (<code>=</code>, <code>+</code>, <code>===</code>, <code>&gt;</code>).</li>
+          <li><strong>Punctuators:</strong> Syntax symbols (<code>()</code>, <code>{}</code>, <code>;</code>, <code>,</code>).</li>
+        </ul>
+
+        <div class="tree">
+          <div class="level">
+            <div class="node">JavaScript Tokens</div>
+          </div>
+          <div class="arrow">&#8595;</div>
+          <div class="level">
+            <div class="node">Keywords</div>
+            <div class="node">Identifiers</div>
+            <div class="node">Literals</div>
+            <div class="node">Operators</div>
+            <div class="node">Punctuators</div>
+          </div>
+        </div>
+
+        <h3>Keywords (Reserved Words)</h3>
+        <p>Keywords are predefined words and cannot be used as variable/class/function names.</p>
+        <p class="small">Examples: <code>let</code>, <code>const</code>, <code>var</code>, <code>if</code>, <code>else</code>, <code>switch</code>, <code>break</code>, <code>continue</code>, <code>this</code>, <code>super</code>, <code>constructor</code>, <code>function</code>.</p>
+
+        <pre><code>let count = 10;
+if (count > 5) {
+  console.log("big");
+}</code></pre>
+        <button class="btn" id="runTokenKeywordDemo">Show Token Output</button>
+        <div class="output" id="tokenKeywordOutput">Click "Show Token Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>K-I-L-O-P</code> = Keywords, Identifiers, Literals, Operators, Punctuators.
+        </div>
+
+        <div class="warning">
+          <strong>Important:</strong> Reserved keywords cannot be used as identifiers. Example: <code>let for = 10;</code> gives syntax error.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>13) Variables: <code>var</code>, <code>let</code>, <code>const</code></summary>
+        <p>A <strong>variable</strong> is a named memory container used to store values (literals/data).</p>
+        <ul>
+          <li>Before ES6 (before 2015), JavaScript mainly used <code>var</code>.</li>
+          <li>In ES6 / ES2015, <code>let</code> and <code>const</code> were introduced.</li>
+          <li><code>let</code>: block-scoped variable, re-assignable.</li>
+          <li><code>const</code>: block-scoped constant reference, must initialize at declaration.</li>
+        </ul>
+
+        <h3>Declaring and Initializing Variables</h3>
+        <pre><code>// Declaration
+let a;
+
+// Initialization
+a = 10;
+
+// Declaration + Initialization
+let b = 20;</code></pre>
+
+        <div class="two-col">
+          <div>
+            <h3>Code Mapping</h3>
+            <pre><code>var x = 10;
+// x -> identifier
+// = -> assignment operator
+// 10 -> literal value</code></pre>
+            <button class="btn" id="runVariableDemo">Run Variable Output</button>
+          </div>
+          <div>
+            <h3>Output</h3>
+            <div class="output" id="variableOutput">Click "Run Variable Output"</div>
+          </div>
+        </div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>D-I-R</code>
+          = <strong>D</strong>eclare, <strong>I</strong>nitialize, <strong>R</strong>eassign (for var/let).
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>14) Difference Between <code>var</code>, <code>let</code>, and <code>const</code></summary>
+        <p>This comparison follows your screenshot table and adds one interview-important scope row.</p>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Rule / Feature</th>
+                <th>var</th>
+                <th>let</th>
+                <th>const</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Declare and initialize in different lines</td>
+                <td class="ok-cell">Possible</td>
+                <td class="ok-cell">Possible</td>
+                <td class="no-cell">Not possible</td>
+              </tr>
+              <tr>
+                <td>Declare and initialize in same line</td>
+                <td class="ok-cell">Possible</td>
+                <td class="ok-cell">Possible</td>
+                <td class="ok-cell">Possible</td>
+              </tr>
+              <tr>
+                <td>Re-initialization / Re-assignment</td>
+                <td class="ok-cell">Possible</td>
+                <td class="ok-cell">Possible</td>
+                <td class="no-cell">Not possible</td>
+              </tr>
+              <tr>
+                <td>Re-declaration (same scope)</td>
+                <td class="ok-cell">Possible</td>
+                <td class="no-cell">Not possible</td>
+                <td class="no-cell">Not possible</td>
+              </tr>
+              <tr>
+                <td>Scope</td>
+                <td>Function scoped</td>
+                <td>Block scoped</td>
+                <td>Block scoped</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Interview Example</h3>
+        <pre><code>var p = 10;
+var p = 20;   // allowed
+
+let q = 10;
+// let q = 20; // error (re-declaration)
+
+const r = 10;
+// r = 20;     // error (re-assignment)</code></pre>
+        <button class="btn" id="runVarLetConstDemo">Show Comparison Output</button>
+        <div class="output" id="varLetConstOutput">Click "Show Comparison Output"</div>
+
+        <div class="answer">
+          <strong>Best interview default:</strong> Use <code>const</code> by default, use <code>let</code> when value must change, avoid <code>var</code> in modern code.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>15) Scope of Variables</summary>
+        <p><strong>Scope</strong> defines where a variable can be accessed in the code.</p>
+        <ul>
+          <li><strong>Global scope:</strong> Variable is accessible from almost everywhere in the program.</li>
+          <li><strong>Script scope:</strong> Top-level <code>let</code>/<code>const</code> is available in the script but is not a <code>window</code> property.</li>
+          <li><strong>Local/Function scope:</strong> Variable declared inside a function is accessible only in that function.</li>
+          <li><strong>Block scope:</strong> Variable declared with <code>let</code>/<code>const</code> inside <code>{ }</code> is accessible only inside that block.</li>
+        </ul>
+
+        <div class="tree">
+          <div class="level">
+            <div class="node">Scopes of Variables</div>
+          </div>
+          <div class="arrow">&#8595;</div>
+          <div class="level">
+            <div class="node">Global</div>
+            <div class="node">Script</div>
+            <div class="node">Function/Local</div>
+            <div class="node">Block</div>
+          </div>
+        </div>
+
+        <h3>Example</h3>
+        <pre><code>var globalName = "global";
+let scriptName = "script";
+
+function demoScope() {
+  var localName = "local";
+  if (true) {
+    let blockName = "block";
+  }
+}</code></pre>
+
+        <button class="btn" id="runScopeDemo">Show Scope Output</button>
+        <div class="output" id="scopeOutput">Click "Show Scope Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>G-S-L-B</code>
+          = <strong>G</strong>lobal, <strong>S</strong>cript, <strong>L</strong>ocal, <strong>B</strong>lock.
+        </div>
+
+        <div class="note">
+          <strong>Interview point:</strong> <code>var</code> is function-scoped, while <code>let</code> and <code>const</code> are block-scoped.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>16) Hoisting and TDZ (Variable + Function Hoisting)</summary>
+        <p><strong>Hoisting</strong> is JavaScript behavior where declarations are processed before code execution.</p>
+        <ul>
+          <li><strong>Variable hoisting with <code>var</code>:</strong> declaration is hoisted and initialized as <code>undefined</code>.</li>
+          <li><strong><code>let</code>/<code>const</code>:</strong> declarations are hoisted but stay in <strong>TDZ (Temporal Dead Zone)</strong> until declaration line executes.</li>
+          <li><strong>Function declaration hoisting:</strong> full function body is hoisted, so it can be called before its declaration.</li>
+          <li><strong>Function expression:</strong> behaves like variable hoisting rule of its variable.</li>
+        </ul>
+
+        <div class="tree">
+          <div class="level">
+            <div class="node">Creation Phase</div>
+          </div>
+          <div class="arrow">&#8595;</div>
+          <div class="level">
+            <div class="node">var -> undefined</div>
+            <div class="node">function -> full body</div>
+            <div class="node">let/const -> TDZ</div>
+          </div>
+        </div>
+
+        <h3>Code Example</h3>
+        <pre><code>console.log(a);  // undefined
+var a = 10;
+
+// console.log(b); // ReferenceError (TDZ)
+let b = 20;
+
+hello(); // works
+function hello() {
+  console.log("hello");
+}</code></pre>
+
+        <button class="btn" id="runHoistingDemo">Show Hoisting Output</button>
+        <div class="output" id="hoistingOutput">Click "Show Hoisting Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>V-F-T</code>
+          = <strong>V</strong>ar -> undefined, <strong>F</strong>unction declaration -> usable early, <strong>T</strong>DZ for let/const.
+        </div>
+
+        <div class="warning">
+          <strong>TDZ:</strong> Accessing <code>let</code> or <code>const</code> before declaration gives <code>ReferenceError</code>.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>17) Heap and Stack in JavaScript</summary>
+        <p>JavaScript memory model is usually explained with <strong>Stack</strong> and <strong>Heap</strong>.</p>
+        <ul>
+          <li><strong>Stack:</strong> manages execution contexts (call stack), function calls, and usually primitive values for interview-level explanation.</li>
+          <li><strong>Heap:</strong> stores objects, arrays, and functions as reference types.</li>
+          <li><strong>Primitive assignment:</strong> copies value.</li>
+          <li><strong>Reference assignment:</strong> copies address/reference, so both variables point to same object.</li>
+        </ul>
+
+        <div class="two-col">
+          <div>
+            <h3>Diagram: Call Stack</h3>
+            <pre><code>Top
+| three() EC |
+| two() EC   |
+| one() EC   |
+| Global EC  |
+Bottom</code></pre>
+          </div>
+          <div>
+            <h3>Diagram: Heap Memory</h3>
+            <pre><code>Heap:
+0xA1 -> { name: "Ravi" }
+0xB2 -> [10, 20, 30]
+
+Stack refs:
+user -> 0xA1
+list -> 0xB2</code></pre>
+          </div>
+        </div>
+
+        <h3>Code Example</h3>
+        <pre><code>let x = 10;
+let y = x;      // value copy
+y = 99;
+
+const obj1 = { n: 10 };
+const obj2 = obj1; // reference copy
+obj2.n = 99;       // obj1.n also changes</code></pre>
+
+        <button class="btn" id="runHeapStackDemo">Show Heap/Stack Output</button>
+        <div class="output" id="heapStackOutput">Click "Show Heap/Stack Output"</div>
+
+        <div class="note">
+          <strong>Interview point:</strong> Primitive variables copy values; objects/arrays copy references.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>18) Identifiers</summary>
+        <p><strong>Identifier</strong> is a name used to identify memory blocks in JavaScript.</p>
+        <h3>📌 What Is an Identifier?</h3>
+        <p>An identifier is the name used to identify:</p>
+        <ul>
+          <li>Variables</li>
+          <li>Functions</li>
+          <li>Classes</li>
+          <li>Objects</li>
+          <li>Arrays</li>
+        </ul>
+
+        <pre><code>var x = 10;
+// x is an identifier</code></pre>
+
+        <h3>Rules for Identifiers</h3>
+        <ul>
+          <li>Keywords should not be used as identifiers.</li>
+          <li>Identifiers are case-sensitive.</li>
+          <li>Identifiers should not start with a number, but numbers can appear in between or at the end.</li>
+          <li>Special characters are not allowed except <code>$</code> and <code>_</code>.</li>
+          <li>Spaces are not allowed in identifier names.</li>
+          <li>Identifier length can be of any practical length.</li>
+        </ul>
+
+        <button class="btn" id="runIdentifierDemo">Show Identifier Output</button>
+        <div class="output" id="identifierOutput">Click "Show Identifier Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>F-N-S</code> = First character rule, No spaces, Special chars only <code>$</code> and <code>_</code>.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>19) Literals and Data Types</summary>
+        <p><strong>Literal/Data</strong> means the actual value stored in a variable.</p>
+        <pre><code>var x = 10;
+// 10 is literal/data value</code></pre>
+
+        <p><strong>Data type</strong> means what kind of data is stored in a variable.</p>
+        <ul>
+          <li>In JavaScript, data types are mainly grouped into two categories.</li>
+          <li><strong>Primitive data types</strong></li>
+          <li><strong>Non-primitive (reference) data types</strong></li>
+        </ul>
+
+        <div class="tree">
+          <div class="level">
+            <div class="node">JavaScript Data Types</div>
+          </div>
+          <div class="arrow">&#8595;</div>
+          <div class="level">
+            <div class="node">Primitive</div>
+            <div class="node">Non-Primitive</div>
+          </div>
+          <div class="arrow">&#8595;</div>
+          <div class="level">
+            <div class="node">string, number, boolean, undefined, null, bigint, symbol</div>
+            <div class="node">object, array, function, class, map/set, etc.</div>
+          </div>
+        </div>
+
+        <h3>Primitive Types (Detailed)</h3>
+        <ul>
+          <li><strong>string:</strong> Text data. Example: <code>"hello"</code>, <code>'world'</code>, <code>`template`</code>.</li>
+          <li><strong>number:</strong> Integer, decimal, exponential values. Example: <code>10</code>, <code>3.14</code>, <code>1e5</code>.</li>
+          <li><strong>bigint:</strong> Very large integers outside safe number range. Example: <code>9007199254740993n</code>.</li>
+          <li><strong>boolean:</strong> Logical values <code>true</code> or <code>false</code>.</li>
+          <li><strong>undefined:</strong> Variable declared but value not assigned.</li>
+          <li><strong>null:</strong> Intentional empty value (historical quirk: <code>typeof null</code> is <code>"object"</code>).</li>
+          <li><strong>symbol:</strong> Unique identifier value, mostly used for unique object keys.</li>
+        </ul>
+
+        <h3>Non-Primitive Types (Detailed)</h3>
+        <ul>
+          <li><strong>object:</strong> Key-value structured data. Example: <code>{ name: "A" }</code>.</li>
+          <li><strong>array:</strong> Ordered list (technically object). Example: <code>[1, 2, 3]</code>.</li>
+          <li><strong>function:</strong> Callable object. Example: <code>function add(a,b){...}</code>.</li>
+          <li><strong>class instances:</strong> Objects created from classes.</li>
+          <li><strong>Map/Set/Date/RegExp:</strong> Built-in reference structures and utility objects.</li>
+        </ul>
+
+        <h3>Quick <code>typeof</code> Reference</h3>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Value</th>
+                <th><code>typeof</code> Result</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>"hello"</code></td>
+                <td><code>string</code></td>
+                <td>Primitive text value</td>
+              </tr>
+              <tr>
+                <td><code>10</code></td>
+                <td><code>number</code></td>
+                <td>Primitive number</td>
+              </tr>
+              <tr>
+                <td><code>2n</code></td>
+                <td><code>bigint</code></td>
+                <td>Large integer type</td>
+              </tr>
+              <tr>
+                <td><code>true</code></td>
+                <td><code>boolean</code></td>
+                <td>Logical primitive</td>
+              </tr>
+              <tr>
+                <td><code>undefined</code></td>
+                <td><code>undefined</code></td>
+                <td>Declared but not assigned</td>
+              </tr>
+              <tr>
+                <td><code>null</code></td>
+                <td><code>object</code></td>
+                <td>Legacy JS behavior</td>
+              </tr>
+              <tr>
+                <td><code>[1,2]</code></td>
+                <td><code>object</code></td>
+                <td>Use <code>Array.isArray()</code> for array check</td>
+              </tr>
+              <tr>
+                <td><code>function(){}</code></td>
+                <td><code>function</code></td>
+                <td>Special callable object</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button class="btn" id="runDataTypesDemo">Show Data Types Output</button>
+        <div class="output" id="dataTypesOutput">Click "Show Data Types Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>7P + R</code> = 7 primitive types + reference/non-primitive types.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>20) Difference Between Primitive and Non-Primitive Data Types</summary>
+        <p>This follows your notes and is written in interview-friendly form.</p>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Primitive Datatype</th>
+                <th>Non-Primitive Datatype</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Predefined basic data types.</td>
+                <td>User-created/reference-based structures.</td>
+              </tr>
+              <tr>
+                <td>Stores a single simple value at a time.</td>
+                <td>Can hold multiple values/properties.</td>
+              </tr>
+              <tr>
+                <td>Immutable values (operations create new values).</td>
+                <td>Usually mutable (object/array content can change).</td>
+              </tr>
+              <tr>
+                <td><strong>Types:</strong> string, number, boolean, undefined, null, bigint, symbol.</td>
+                <td><strong>Examples:</strong> object, array, function, class instances, JSON-like objects.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Code Example</h3>
+        <pre><code>let a = 10;
+let b = a;  // primitive copy
+b = 99;     // a not changed
+
+const obj1 = { score: 10 };
+const obj2 = obj1; // reference copy
+obj2.score = 99;   // obj1.score also changes</code></pre>
+
+        <button class="btn" id="runPrimitiveNonPrimitiveDemo">Show Difference Output</button>
+        <div class="output" id="primitiveNonPrimitiveOutput">Click "Show Difference Output"</div>
+
+        <div class="note">
+          <strong>Interview line:</strong> Primitive assignment copies values, but non-primitive assignment copies references.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>21) String Literals and Template Literals</summary>
+        <h3>String</h3>
+        <p>String is a sequence of characters enclosed in double quotes (<code>""</code>), single quotes (<code>''</code>), or template literals (<code>``</code>).</p>
+
+        <h3><code>typeof()</code></h3>
+        <p><code>typeof</code> is used to check the datatype of a value or variable.</p>
+
+        <h3>Number</h3>
+        <ul>
+          <li><code>number</code> datatype can store integer, float, and exponential values.</li>
+          <li>Safe integer range: <code>-(2^53 - 1)</code> to <code>+(2^53 - 1)</code>.</li>
+          <li>Beyond this safe integer range, use <code>bigint</code>.</li>
+        </ul>
+
+        <h3>bigint</h3>
+        <ul>
+          <li>If numeric range is more than <code>-(2^53 - 1)</code> to <code>+(2^53 - 1)</code>, use <code>bigint</code>.</li>
+          <li>Bigint values are written with <code>n</code> suffix.</li>
+        </ul>
+        <pre><code>let x = 2n;</code></pre>
+
+        <h3>NaN (Not a Number)</h3>
+        <ul>
+          <li><code>NaN</code> represents an invalid numeric result.</li>
+          <li>Important interview fact: <code>typeof NaN</code> is <code>"number"</code>.</li>
+        </ul>
+
+        <h3>null</h3>
+        <ul>
+          <li><code>null</code> means empty value / intentional absence of an object value.</li>
+          <li>Interview fact: <code>typeof null</code> is <code>"object"</code> (historical JavaScript behavior).</li>
+        </ul>
+
+        <p>String values in JavaScript can be written in three common ways.</p>
+        <ul>
+          <li><strong>Double quotes:</strong> <code>"text"</code></li>
+          <li><strong>Single quotes:</strong> <code>'text'</code></li>
+          <li><strong>Template literals:</strong> <code>`text`</code> (backticks)</li>
+        </ul>
+
+        <pre><code>let str1 = "double quotes";
+let str2 = 'single quotes';
+let str3 = `template literals`;</code></pre>
+
+        <h3>Concatenation vs Template String</h3>
+        <pre><code>let fn = "pushpa";
+let ln = "Raj";
+let company = "Google";
+
+console.log("My name is " + fn + " " + ln + " and i am working in a company " + company);
+console.log(`My name is ${fn} ${ln} and i am working in a company ${company}`);</code></pre>
+
+        <button class="btn" id="runStringTemplateDemo">Show String Output</button>
+        <div class="output" id="stringTemplateOutput">Click "Show String Output"</div>
+
+        <h3>Typeof + Number + NaN Example</h3>
+        <pre><code>console.log(typeof "hello");   // string
+console.log(typeof 10);        // number
+console.log(typeof NaN);       // number
+console.log(typeof null);      // object
+console.log(typeof 2n);        // bigint
+console.log(Number.MAX_SAFE_INTEGER);</code></pre>
+        <button class="btn" id="runTypeofNumberNanDemo">Show Typeof/NaN Output</button>
+        <div class="output" id="typeofNumberNanOutput">Click "Show Typeof/NaN Output"</div>
+
+        <div class="note">
+          <strong>Interview point:</strong> Prefer template literals for readability and variable interpolation using <code>${...}</code>.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>22) Interview Quick Revision</summary>
         <ul>
           <li>JavaScript is high-level, dynamic, and used for interactivity.</li>
           <li>It runs in browser and on server (Node.js).</li>
           <li>Most common HTML integration: internal script or external script file.</li>
+          <li>Best script placement: end of <code>body</code>, or use <code>defer</code> in <code>head</code>.</li>
+          <li><code>async</code> is non-blocking but execution order is not guaranteed.</li>
+          <li><code>defer</code> is non-blocking and preserves script order after HTML parsing.</li>
+          <li>Correct DOM root rule: <code>html</code> directly contains only <code>head</code> and <code>body</code>.</li>
+          <li>Token is the smallest language unit: keywords, identifiers, literals, operators, punctuators.</li>
+          <li>Keywords are reserved words and cannot be used as identifiers.</li>
+          <li>For variables: <code>var</code> allows re-declaration; <code>let</code>/<code>const</code> do not.</li>
+          <li>Variable scope types: global, script, function(local), and block scope.</li>
+          <li>Literals are stored values; datatype tells what kind of value is stored.</li>
+          <li>Datatypes are mainly primitive and non-primitive(reference).</li>
+          <li>There are 7 primitive types: string, number, bigint, boolean, undefined, null, symbol.</li>
+          <li>Arrays are objects in JavaScript; use <code>Array.isArray()</code> to detect arrays.</li>
+          <li>Strings can use single quotes, double quotes, or template literals.</li>
+          <li>Template literals support interpolation via <code>${...}</code>.</li>
+          <li><code>number</code> supports integer/float/exponential values; safe integer range is <code>-(2^53-1)</code> to <code>+(2^53-1)</code>.</li>
+          <li><code>bigint</code> is for very large integers and uses <code>n</code> suffix (example: <code>2n</code>).</li>
+          <li><code>NaN</code> means invalid numeric result and <code>typeof NaN</code> is <code>"number"</code>.</li>
+          <li><code>null</code> means empty/absence value, and <code>typeof null</code> is <code>"object"</code> (legacy behavior).</li>
+          <li>Hoisting: <code>var</code> -> undefined, function declaration callable before line, <code>let/const</code> in TDZ.</li>
+          <li>Memory model: call stack for execution, heap for reference values.</li>
           <li>Browser JS is sandboxed: secure but restricted.</li>
           <li>Single-threaded with event loop support for async behavior.</li>
           <li><code>getElementById</code> is one of the first DOM APIs to learn for interviews.</li>
+          <li><code>addEventListener("click", e =&gt; {})</code> is the standard way to handle button actions.</li>
         </ul>
 
         <div class="answer">
@@ -535,11 +1600,358 @@ console.log(demo);</code></pre>
         </div>
 
         <p class="footer">You can now send the next photo, and I will continue these notes in the same style in this same file.</p>
+        </details>
       </section>
     </main>
   </div>
 
   <script>
+    const topicDetails = document.querySelectorAll("main.grid .card details");
+    const expandAllTopicsBtn = document.getElementById("expandAllTopics");
+    const collapseAllTopicsBtn = document.getElementById("collapseAllTopics");
+
+    expandAllTopicsBtn.addEventListener("click", () => {
+      topicDetails.forEach((detail) => {
+        detail.open = true;
+      });
+    });
+
+    collapseAllTopicsBtn.addEventListener("click", () => {
+      topicDetails.forEach((detail) => {
+        detail.open = false;
+      });
+    });
+
+    const tokenKeywordBtn = document.getElementById("runTokenKeywordDemo");
+    const tokenKeywordOutput = document.getElementById("tokenKeywordOutput");
+
+    tokenKeywordBtn.addEventListener("click", () => {
+      let keywordError;
+      try {
+        Function("let for = 10;");
+        keywordError = "No error (unexpected).";
+      } catch (err) {
+        keywordError = err.name + ": " + err.message.split("\n")[0];
+      }
+
+      tokenKeywordOutput.textContent = [
+        "Sample Code: let count = 10; if (count > 5) { console.log(\"big\"); }",
+        "",
+        "Token Breakdown:",
+        "let -> keyword",
+        "count -> identifier",
+        "= -> operator",
+        "10 -> literal",
+        "if -> keyword",
+        "( ) { } ; -> punctuators",
+        "",
+        "Reserved keyword test (let for = 10):",
+        keywordError
+      ].join("\n");
+    });
+
+    const identifierDemoBtn = document.getElementById("runIdentifierDemo");
+    const identifierOutput = document.getElementById("identifierOutput");
+
+    identifierDemoBtn.addEventListener("click", () => {
+      const sampleNames = ["x", "_total", "$amount", "user2", "2user", "user name", "for"];
+      const reserved = new Set([
+        "if", "else", "for", "while", "var", "let", "const", "function", "class", "return", "switch", "break"
+      ]);
+      const regex = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
+
+      const resultLines = sampleNames.map((name) => {
+        if (reserved.has(name)) {
+          return name + " -> Invalid (reserved keyword)";
+        }
+        if (!regex.test(name)) {
+          return name + " -> Invalid (breaks identifier rules)";
+        }
+        return name + " -> Valid identifier";
+      });
+
+      identifierOutput.textContent = [
+        "Identifier Rule Check:",
+        "x can be variable name in: var x = 10;",
+        "",
+        ...resultLines,
+        "",
+        "Case sensitive check: user and User are different identifiers."
+      ].join("\n");
+    });
+
+    const variableDemoBtn = document.getElementById("runVariableDemo");
+    const variableOutput = document.getElementById("variableOutput");
+
+    variableDemoBtn.addEventListener("click", () => {
+      let a;
+      a = 10;
+      let b = 20;
+      var x = 10;
+      x = "hi";
+
+      variableOutput.textContent = [
+        "Declaration + Initialization Demo:",
+        "let a;  -> declared",
+        "a = 10; -> initialized",
+        "let b = 20; -> declared + initialized",
+        "",
+        "Re-assignment Demo:",
+        "var x = 10; then x = \"hi\";",
+        "Current x value: " + x,
+        "Current x type: " + typeof x
+      ].join("\n");
+    });
+
+    const varLetConstDemoBtn = document.getElementById("runVarLetConstDemo");
+    const varLetConstOutput = document.getElementById("varLetConstOutput");
+
+    varLetConstDemoBtn.addEventListener("click", () => {
+      let letRedeclareError;
+      let constReassignError;
+      let scopeResult;
+
+      try {
+        Function("let q = 10; let q = 20;")();
+        letRedeclareError = "No error (unexpected).";
+      } catch (err) {
+        letRedeclareError = err.name;
+      }
+
+      try {
+        Function("'use strict'; const r = 10; r = 20;")();
+        constReassignError = "No error (unexpected).";
+      } catch (err) {
+        constReassignError = err.name;
+      }
+
+      scopeResult = Function(
+        "if (true) { var v = 1; let l = 2; } return 'typeof v=' + typeof v + ', typeof l=' + typeof l;"
+      )();
+
+      varLetConstOutput.textContent = [
+        "Rule Check:",
+        "var re-declaration: allowed",
+        "let re-declaration: " + letRedeclareError,
+        "const re-assignment: " + constReassignError,
+        "",
+        "Scope Check:",
+        scopeResult,
+        "",
+        "Interview Conclusion: prefer const, then let; avoid var in modern code."
+      ].join("\n");
+    });
+
+    var globalScopeName = "global variable";
+    let scriptScopeName = "script variable";
+
+    const scopeDemoBtn = document.getElementById("runScopeDemo");
+    const scopeOutput = document.getElementById("scopeOutput");
+
+    scopeDemoBtn.addEventListener("click", () => {
+      function scopeTester() {
+        var localName = "local/function variable";
+        if (true) {
+          let blockName = "block variable";
+          return { localName, blockName };
+        }
+        return { localName, blockName: "not reached" };
+      }
+
+      const result = scopeTester();
+      const globalVisibleOnWindow = typeof window.globalScopeName !== "undefined";
+      const scriptVisibleOnWindow = typeof window.scriptScopeName !== "undefined";
+      const blockOutside = typeof blockName;
+
+      scopeOutput.textContent = [
+        "Scope Demo Output:",
+        "Global var value: " + globalScopeName,
+        "Script let value: " + scriptScopeName,
+        "Local value from function: " + result.localName,
+        "Block value inside function block: " + result.blockName,
+        "",
+        "Checks:",
+        "window.globalScopeName exists: " + globalVisibleOnWindow,
+        "window.scriptScopeName exists: " + scriptVisibleOnWindow,
+        "typeof blockName outside block: " + blockOutside,
+        "",
+        "Meaning: var can become global on window, but top-level let is script-scoped."
+      ].join("\n");
+    });
+
+    const hoistingDemoBtn = document.getElementById("runHoistingDemo");
+    const hoistingOutput = document.getElementById("hoistingOutput");
+
+    hoistingDemoBtn.addEventListener("click", () => {
+      const varBefore = Function("return x; var x = 10;")();
+      const tdzLet = Function("try { return y; } catch (e) { return e.name; } let y = 20;")();
+      const tdzConst = Function("try { return z; } catch (e) { return e.name; } const z = 30;")();
+      const funcDeclBefore = Function("return greet(); function greet(){ return 'Hello from declaration'; }")();
+      const funcExprBefore = Function(
+        "try { return expr(); } catch(e){ return e.name; } var expr = function(){ return 'Hello from expression'; };"
+      )();
+      const funcExprAfter = Function(
+        "var expr = function(){ return 'Hello from expression'; }; return expr();"
+      )();
+
+      hoistingOutput.textContent = [
+        "Hoisting Demo Output:",
+        "var before declaration -> " + String(varBefore),
+        "let before declaration -> " + tdzLet,
+        "const before declaration -> " + tdzConst,
+        "function declaration before line -> " + funcDeclBefore,
+        "function expression before assignment -> " + funcExprBefore,
+        "function expression after assignment -> " + funcExprAfter,
+        "",
+        "TDZ means let/const exist but cannot be accessed before declaration line."
+      ].join("\n");
+    });
+
+    const heapStackDemoBtn = document.getElementById("runHeapStackDemo");
+    const heapStackOutput = document.getElementById("heapStackOutput");
+
+    heapStackDemoBtn.addEventListener("click", () => {
+      const primitiveCopy = Function("let a=10; let b=a; b=99; return 'a=' + a + ', b=' + b;")();
+      const referenceCopy = Function(
+        "const obj1={n:10}; const obj2=obj1; obj2.n=99; return 'obj1.n=' + obj1.n + ', obj2.n=' + obj2.n;"
+      )();
+      const callStackFlow = Function(
+        "function one(){ return 'one -> ' + two(); } function two(){ return 'two -> ' + three(); } function three(){ return 'three'; } return one();"
+      )();
+
+      heapStackOutput.textContent = [
+        "Heap/Stack Demo Output:",
+        "Primitive copy -> " + primitiveCopy,
+        "Reference copy -> " + referenceCopy,
+        "Call stack flow -> " + callStackFlow,
+        "",
+        "Conclusion: primitives copy values; objects/arrays share references."
+      ].join("\n");
+    });
+
+    const dataTypesDemoBtn = document.getElementById("runDataTypesDemo");
+    const dataTypesOutput = document.getElementById("dataTypesOutput");
+
+    dataTypesDemoBtn.addEventListener("click", () => {
+      const sample = {
+        string: "hello",
+        number: 42,
+        boolean: true,
+        undefinedValue: undefined,
+        nullValue: null,
+        bigintValue: 9007199254740991n,
+        symbolValue: Symbol("id"),
+        arrayValue: [1, 2, 3],
+        objectValue: { a: 1 },
+        functionValue: function () { return "ok"; }
+      };
+
+      const symA = Symbol("id");
+      const symB = Symbol("id");
+      const bigintSum = 2n + 3n;
+
+      dataTypesOutput.textContent = [
+        "Datatype Check Output:",
+        "string -> " + typeof sample.string,
+        "number -> " + typeof sample.number,
+        "boolean -> " + typeof sample.boolean,
+        "undefined -> " + typeof sample.undefinedValue,
+        "null -> " + typeof sample.nullValue + " (special JS quirk)",
+        "bigint -> " + typeof sample.bigintValue,
+        "symbol -> " + typeof sample.symbolValue,
+        "array -> " + typeof sample.arrayValue + " (Array.isArray=true)",
+        "object -> " + typeof sample.objectValue,
+        "function -> " + typeof sample.functionValue,
+        "",
+        "Important Checks:",
+        "Array.isArray(sample.arrayValue) -> " + Array.isArray(sample.arrayValue),
+        "sample.nullValue === null -> " + (sample.nullValue === null),
+        "Object.prototype.toString.call(sample.nullValue) -> " + Object.prototype.toString.call(sample.nullValue),
+        "Symbol('id') === Symbol('id') -> " + (symA === symB),
+        "2n + 3n -> " + bigintSum.toString() + "n"
+      ].join("\n");
+    });
+
+    const primitiveNonPrimitiveDemoBtn = document.getElementById("runPrimitiveNonPrimitiveDemo");
+    const primitiveNonPrimitiveOutput = document.getElementById("primitiveNonPrimitiveOutput");
+
+    primitiveNonPrimitiveDemoBtn.addEventListener("click", () => {
+      let a = 10;
+      let b = a;
+      b = 99;
+
+      const obj1 = { score: 10 };
+      const obj2 = obj1;
+      obj2.score = 99;
+
+      primitiveNonPrimitiveOutput.textContent = [
+        "Primitive vs Non-Primitive Output:",
+        "Primitive copy -> a=" + a + ", b=" + b,
+        "Non-primitive reference copy -> obj1.score=" + obj1.score + ", obj2.score=" + obj2.score,
+        "",
+        "Observation:",
+        "Primitive values are copied independently.",
+        "Objects/arrays share same reference unless cloned."
+      ].join("\n");
+    });
+
+    const stringTemplateDemoBtn = document.getElementById("runStringTemplateDemo");
+    const stringTemplateOutput = document.getElementById("stringTemplateOutput");
+
+    stringTemplateDemoBtn.addEventListener("click", () => {
+      let str1 = "double quotes";
+      let str2 = 'single quotes';
+      let str3 = `template literals`;
+
+      let fn = "pushpa";
+      let ln = "Raj";
+      let company = "Google";
+
+      const concatLine = "My name is " + fn + " " + ln + " and i am working in a company " + company;
+      const templateLine = `My name is ${fn} ${ln} and i am working in a company ${company}`;
+
+      stringTemplateOutput.textContent = [
+        "String Type Check:",
+        "str1 -> " + str1 + " | typeof: " + typeof str1,
+        "str2 -> " + str2 + " | typeof: " + typeof str2,
+        "str3 -> " + str3 + " | typeof: " + typeof str3,
+        "",
+        "Concatenation:",
+        concatLine,
+        "",
+        "Template Literal:",
+        templateLine
+      ].join("\n");
+    });
+
+    const typeofNumberNanDemoBtn = document.getElementById("runTypeofNumberNanDemo");
+    const typeofNumberNanOutput = document.getElementById("typeofNumberNanOutput");
+
+    typeofNumberNanDemoBtn.addEventListener("click", () => {
+      const bigBeyondSafe = Number.MAX_SAFE_INTEGER + 1;
+      const bigBeyondSafeNext = Number.MAX_SAFE_INTEGER + 2;
+
+      typeofNumberNanOutput.textContent = [
+        "typeof Demo:",
+        "typeof \"hello\" -> " + typeof "hello",
+        "typeof 10 -> " + typeof 10,
+        "typeof NaN -> " + typeof NaN,
+        "typeof null -> " + typeof null,
+        "typeof 2n -> " + typeof 2n,
+        "",
+        "Number Range Demo:",
+        "MAX_SAFE_INTEGER -> " + Number.MAX_SAFE_INTEGER,
+        "MIN_SAFE_INTEGER -> " + Number.MIN_SAFE_INTEGER,
+        "MAX_SAFE_INTEGER + 1 -> " + bigBeyondSafe,
+        "MAX_SAFE_INTEGER + 2 -> " + bigBeyondSafeNext,
+        "(Above may lose integer precision in number type)",
+        "",
+        "NaN check:",
+        "Number('abc') -> " + Number("abc"),
+        "isNaN(Number('abc')) -> " + isNaN(Number("abc"))
+      ].join("\n");
+    });
+
     const writeBtn = document.getElementById("runWriteExample");
     const writeOutput = document.getElementById("writeOutput");
 
@@ -570,6 +1982,66 @@ console.log(demo);</code></pre>
         "Text: " + demo.textContent.trim()
       ].join("\n");
     });
+
+    const demoButton = document.getElementById("demo");
+    const eventOutput = document.getElementById("eventOutput");
+    let clickCount = 0;
+
+    demoButton.addEventListener("click", (e) => {
+      clickCount += 1;
+      console.log("ExcelR");
+      eventOutput.textContent = [
+        "Console Output:",
+        "ExcelR",
+        "",
+        "Event Object Details:",
+        "type: " + e.type,
+        "target.id: " + e.target.id,
+        "currentTarget.id: " + e.currentTarget.id,
+        "click count: " + clickCount
+      ].join("\n");
+    });
+
+    const normalModeBtn = document.getElementById("showNormalMode");
+    const asyncModeBtn = document.getElementById("showAsyncMode");
+    const deferModeBtn = document.getElementById("showDeferMode");
+    const scriptModeOutput = document.getElementById("scriptModeOutput");
+
+    normalModeBtn.addEventListener("click", () => {
+      scriptModeOutput.textContent = [
+        "Mode: Normal <script src=\"external.js\"><\\/script>",
+        "1) HTML parsing starts",
+        "2) Script tag reached -> parsing pauses",
+        "3) external.js downloads",
+        "4) external.js executes immediately",
+        "5) HTML parsing resumes"
+      ].join("\n");
+    });
+
+    asyncModeBtn.addEventListener("click", () => {
+      scriptModeOutput.textContent = [
+        "Mode: <script src=\"external.js\" async><\\/script>",
+        "1) HTML parsing starts",
+        "2) JS downloads in parallel",
+        "3) As soon as download finishes, JS executes",
+        "4) Parsing pauses only during execution",
+        "5) Parsing continues (execution order with other async files is not fixed)"
+      ].join("\n");
+    });
+
+    deferModeBtn.addEventListener("click", () => {
+      scriptModeOutput.textContent = [
+        "Mode: <script src=\"external.js\" defer><\\/script>",
+        "1) HTML parsing starts",
+        "2) JS downloads in parallel",
+        "3) HTML parsing completes fully",
+        "4) Deferred scripts execute in order",
+        "5) Best for DOM-dependent application scripts"
+      ].join("\n");
+    });
   </script>
 </body>
 </html>
+
+
+
