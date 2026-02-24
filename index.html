@@ -1563,43 +1563,944 @@ console.log(Number.MAX_SAFE_INTEGER);</code></pre>
 
       <section class="card">
         <details>
-          <summary>22) Interview Quick Revision</summary>
+          <summary>22) Operators in JavaScript</summary>
+        <p><strong>Operators</strong> are symbols used to perform operations on operands (values/variables).</p>
+        <pre><code>2 + 3
+2 -> operand1
++ -> operator
+3 -> operand2</code></pre>
+
+        <p>Based on number of operands, operators are divided into 3 types:</p>
         <ul>
-          <li>JavaScript is high-level, dynamic, and used for interactivity.</li>
-          <li>It runs in browser and on server (Node.js).</li>
-          <li>Most common HTML integration: internal script or external script file.</li>
-          <li>Best script placement: end of <code>body</code>, or use <code>defer</code> in <code>head</code>.</li>
-          <li><code>async</code> is non-blocking but execution order is not guaranteed.</li>
-          <li><code>defer</code> is non-blocking and preserves script order after HTML parsing.</li>
-          <li>Correct DOM root rule: <code>html</code> directly contains only <code>head</code> and <code>body</code>.</li>
-          <li>Token is the smallest language unit: keywords, identifiers, literals, operators, punctuators.</li>
-          <li>Keywords are reserved words and cannot be used as identifiers.</li>
-          <li>For variables: <code>var</code> allows re-declaration; <code>let</code>/<code>const</code> do not.</li>
-          <li>Variable scope types: global, script, function(local), and block scope.</li>
-          <li>Literals are stored values; datatype tells what kind of value is stored.</li>
-          <li>Datatypes are mainly primitive and non-primitive(reference).</li>
-          <li>There are 7 primitive types: string, number, bigint, boolean, undefined, null, symbol.</li>
-          <li>Arrays are objects in JavaScript; use <code>Array.isArray()</code> to detect arrays.</li>
-          <li>Strings can use single quotes, double quotes, or template literals.</li>
-          <li>Template literals support interpolation via <code>${...}</code>.</li>
-          <li><code>number</code> supports integer/float/exponential values; safe integer range is <code>-(2^53-1)</code> to <code>+(2^53-1)</code>.</li>
-          <li><code>bigint</code> is for very large integers and uses <code>n</code> suffix (example: <code>2n</code>).</li>
-          <li><code>NaN</code> means invalid numeric result and <code>typeof NaN</code> is <code>"number"</code>.</li>
-          <li><code>null</code> means empty/absence value, and <code>typeof null</code> is <code>"object"</code> (legacy behavior).</li>
-          <li>Hoisting: <code>var</code> -> undefined, function declaration callable before line, <code>let/const</code> in TDZ.</li>
-          <li>Memory model: call stack for execution, heap for reference values.</li>
-          <li>Browser JS is sandboxed: secure but restricted.</li>
-          <li>Single-threaded with event loop support for async behavior.</li>
-          <li><code>getElementById</code> is one of the first DOM APIs to learn for interviews.</li>
-          <li><code>addEventListener("click", e =&gt; {})</code> is the standard way to handle button actions.</li>
+          <li><strong>Unary</strong> operator (one operand): <code>++a</code>, <code>--a</code>, <code>typeof a</code>, <code>!a</code></li>
+          <li><strong>Binary</strong> operator (two operands): <code>a + b</code>, <code>a &gt; b</code>, <code>a &amp;&amp; b</code></li>
+          <li><strong>Ternary</strong> operator (three parts): <code>condition ? expr1 : expr2</code></li>
+        </ul>
+
+        <h3>Important Operator Categories</h3>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Operators</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Arithmetic</td>
+                <td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code>, <code>++</code>, <code>--</code></td>
+                <td><code>10 % 3</code> gives <code>1</code></td>
+              </tr>
+              <tr>
+                <td>Assignment</td>
+                <td><code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code></td>
+                <td><code>x += 2</code></td>
+              </tr>
+              <tr>
+                <td>Relational / Comparison</td>
+                <td><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>==</code>, <code>===</code>, <code>!=</code>, <code>!==</code></td>
+                <td><code>5 === \"5\"</code> gives <code>false</code></td>
+              </tr>
+              <tr>
+                <td>Logical</td>
+                <td><code>&amp;&amp;</code>, <code>||</code>, <code>!</code></td>
+                <td><code>true &amp;&amp; false</code> gives <code>false</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Arithmetic Operators (From Your Notes)</h3>
+        <ul>
+          <li>Addition <code>+</code></li>
+          <li>Subtraction <code>-</code></li>
+          <li>Multiplication <code>*</code></li>
+          <li>Division <code>/</code></li>
+          <li>Modulus <code>%</code></li>
+          <li>Exponential <code>**</code></li>
+          <li>Increment <code>++</code></li>
+          <li>Decrement <code>--</code></li>
+        </ul>
+
+        <pre><code>let a = 10, b = 3;
+let result = a > b ? "a is bigger" : "b is bigger";</code></pre>
+        <button class="btn" id="runOperatorsDemo">Show Operators Output</button>
+        <div class="output" id="operatorsOutput">Click "Show Operators Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>A-A-R-L</code>
+          = <strong>A</strong>rithmetic, <strong>A</strong>ssignment, <strong>R</strong>elational, <strong>L</strong>ogical.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>23) Conditional Statements (Decision Making)</summary>
+        <p>Conditional statements execute code blocks based on boolean conditions.</p>
+        <ul>
+          <li><strong>if:</strong> Executes block only when condition is true.</li>
+          <li><strong>if-else:</strong> One condition, two possible blocks.</li>
+          <li><strong>else-if ladder:</strong> Multiple conditions checked top to bottom.</li>
+          <li><strong>switch:</strong> Multiple cases based on a single key; often cleaner than long else-if ladder.</li>
+          <li><strong>ternary operator:</strong> Short form of if-else expression.</li>
+        </ul>
+
+        <pre><code>// if
+if (isLoggedIn) {
+  console.log("Welcome");
+}
+
+// if-else
+if (age >= 18) {
+  console.log("Adult");
+} else {
+  console.log("Minor");
+}
+
+// else-if ladder
+if (marks >= 90) grade = "A";
+else if (marks >= 75) grade = "B";
+else grade = "C";
+
+// switch
+switch (day) {
+  case 1: console.log("Monday"); break;
+  default: console.log("Invalid");
+}</code></pre>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Statement</th>
+                <th>Best Use</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>if</code></td>
+                <td>Only true block needed</td>
+                <td><code>if (x &gt; 0) { ... }</code></td>
+              </tr>
+              <tr>
+                <td><code>if...else</code></td>
+                <td>True/false two-way choice</td>
+                <td><code>if (x &gt; 0) ... else ...</code></td>
+              </tr>
+              <tr>
+                <td><code>else if</code></td>
+                <td>Many conditions</td>
+                <td><code>if (...) ... else if (...) ...</code></td>
+              </tr>
+              <tr>
+                <td><code>switch</code></td>
+                <td>Single key, multiple cases</td>
+                <td><code>switch(day){ case 1: ... }</code></td>
+              </tr>
+              <tr>
+                <td><code>? :</code></td>
+                <td>Short if-else expression</td>
+                <td><code>age &gt;= 18 ? "adult" : "minor"</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <pre><code>let marks = 72;
+let grade = marks >= 90 ? "A" : marks >= 75 ? "B" : "C";</code></pre>
+        <button class="btn" id="runConditionalDemo">Show Conditional Output</button>
+        <div class="output" id="conditionalOutput">Click "Show Conditional Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>I-IE-EI-S-T</code> =
+          <strong>I</strong>f, <strong>I</strong>f-else, <strong>E</strong>lse-if,
+          <strong>S</strong>witch, <strong>T</strong>ernary.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>24) <code>prompt()</code> and Type Casting</summary>
+        <p><code>prompt()</code> collects input from browser dialog and returns a <strong>string</strong>.</p>
+        <pre><code>let a = prompt("enter a number"); // returns string
+let n = Number(a);               // converts to number</code></pre>
+
+        <div class="note">
+          <strong>Important:</strong> <code>prompt()</code> works only in browser runtime and can return
+          <code>null</code> when user clicks Cancel.
+        </div>
+
+        <h3>Common Type Casting Methods</h3>
+        <ul>
+          <li><code>Number(value)</code> -> number conversion</li>
+          <li><code>String(value)</code> -> string conversion</li>
+          <li><code>Boolean(value)</code> -> boolean conversion</li>
+          <li><code>parseInt(value)</code> -> integer extraction</li>
+          <li><code>parseFloat(value)</code> -> decimal extraction</li>
+        </ul>
+
+        <button class="btn" id="runTypeCastingDemo">Show Type Casting Output</button>
+        <div class="output" id="typeCastingOutput">Click "Show Type Casting Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>25) Looping Statements</summary>
+        <p>Loops execute a block repeatedly until condition becomes false.</p>
+        <ul>
+          <li><strong>for loop:</strong> Best when iteration count is known.</li>
+          <li><strong>while loop:</strong> Best when count is unknown, but condition-driven.</li>
+          <li><strong>do-while loop:</strong> Runs body at least once before checking condition.</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Loop</th>
+                <th>Control Type</th>
+                <th>Minimum Iterations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>for</code></td>
+                <td>Entry controlled</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td><code>while</code></td>
+                <td>Entry controlled</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td><code>do...while</code></td>
+                <td>Exit controlled</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <pre><code>for (let i = 1; i &lt;= 3; i++) console.log(i);
+let j = 1; while (j &lt;= 3) { console.log(j); j++; }
+let k = 1; do { console.log(k); k++; } while (k &lt;= 3);</code></pre>
+        <button class="btn" id="runLoopsDemo">Show Loop Output</button>
+        <div class="output" id="loopsOutput">Click "Show Loop Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>F-W-D</code> =
+          <strong>F</strong>or (known count), <strong>W</strong>hile (condition-first),
+          <strong>D</strong>o-while (runs once minimum).
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>26) Jumping Statements: <code>break</code> and <code>continue</code></summary>
+        <ul>
+          <li><strong>break:</strong> Terminates loop completely.</li>
+          <li><strong>continue:</strong> Skips current iteration and continues next iteration.</li>
+        </ul>
+        <pre><code>for (let i = 1; i &lt;= 10; i++) {
+  if (i === 5) break;
+}
+
+for (let i = 1; i &lt;= 10; i++) {
+  if (i === 5) continue;
+}</code></pre>
+        <button class="btn" id="runJumpDemo">Show Break/Continue Output</button>
+        <div class="output" id="jumpOutput">Click "Show Break/Continue Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>27) Functions Basics</summary>
+        <p>Function is a reusable block of code used to perform a specific task.</p>
+        <pre><code>function functionName(optionalParameters) {
+  // statements
+}
+
+functionName(arguments);</code></pre>
+        <pre><code>function add(a, b) {
+  return a + b;
+}
+let result = add(5, 2);</code></pre>
+        <ul>
+          <li><strong>Declaration:</strong> function definition/body</li>
+          <li><strong>Invocation:</strong> function calling with arguments</li>
+          <li><strong>Parameters:</strong> variables in function definition</li>
+          <li><strong>Arguments:</strong> actual values passed at call time</li>
+        </ul>
+        <button class="btn" id="runFunctionBasicDemo">Show Function Output</button>
+        <div class="output" id="functionBasicOutput">Click "Show Function Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>28) Types of Functions</summary>
+        <p>These are the function types from your notes with interview-safe meaning.</p>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Definition</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Named Function</td>
+                <td>Function with name; can be called using that name.</td>
+                <td><code>function test(){}</code></td>
+              </tr>
+              <tr>
+                <td>Anonymous Function</td>
+                <td>Function without name; usually used in expression/callback.</td>
+                <td><code>setTimeout(function(){}, 1000)</code></td>
+              </tr>
+              <tr>
+                <td>Function Expression</td>
+                <td>Function assigned to a variable.</td>
+                <td><code>const fn = function(){}</code></td>
+              </tr>
+              <tr>
+                <td>IIFE</td>
+                <td>Function that runs immediately after creation.</td>
+                <td><code>(function(){ ... })();</code></td>
+              </tr>
+              <tr>
+                <td>Arrow Function</td>
+                <td>Short syntax function introduced in ES6.</td>
+                <td><code>const sqr = x =&gt; x * x;</code></td>
+              </tr>
+              <tr>
+                <td>Higher-Order Function</td>
+                <td>Function that accepts/returns another function.</td>
+                <td><code>arr.map(fn)</code></td>
+              </tr>
+              <tr>
+                <td>Callback Function</td>
+                <td>Function passed as argument to another function.</td>
+                <td><code>setTimeout(() =&gt; {}, 500)</code></td>
+              </tr>
+              <tr>
+                <td>Generator Function</td>
+                <td>Function that can pause/resume using <code>yield</code>.</td>
+                <td><code>function* gen(){ yield 1; }</code></td>
+              </tr>
+              <tr>
+                <td>Function Constructor</td>
+                <td>Dynamic function creation (rare in modern code).</td>
+                <td><code>new Function("a", "b", "return a+b")</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <pre><code>// Function expression
+const fn = function () { return "expression"; };
+
+// IIFE
+(function () { console.log("IIFE"); })();
+
+// Arrow
+const sqr = x => x * x;</code></pre>
+
+        <button class="btn" id="runFunctionTypesDemo">Show Function Types Output</button>
+        <div class="output" id="functionTypesOutput">Click "Show Function Types Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>29) Return Keyword (Implicit vs Explicit)</summary>
+        <ul>
+          <li><strong>Explicit return:</strong> uses <code>return</code> keyword directly.</li>
+          <li><strong>Implicit return:</strong> short arrow function can return expression without writing <code>return</code>.</li>
+          <li><strong>Important:</strong> <code>return</code> ends function execution at that line.</li>
+        </ul>
+        <pre><code>function add(a, b) { return a + b; } // explicit
+const mul = (a, b) => a * b;         // implicit</code></pre>
+        <button class="btn" id="runReturnDemo">Show Return Output</button>
+        <div class="output" id="returnOutput">Click "Show Return Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>30) Closure</summary>
+        <p>Closure means inner function can access outer function variables even after outer function execution is completed.</p>
+        <pre><code>function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    return count;
+  };
+}</code></pre>
+        <button class="btn" id="runClosureDemo">Show Closure Output</button>
+        <div class="output" id="closureOutput">Click "Show Closure Output"</div>
+
+        <div class="note">
+          <strong>Where closure is used:</strong> data privacy, counters, memoization, module patterns.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>31) String Methods (Important)</summary>
+        <p>String methods help search, slice, transform, and clean text values.</p>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Example</th>
+                <th>Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>length</code></td><td><code>"JS".length</code></td><td>Count chars</td></tr>
+              <tr><td><code>charAt()</code></td><td><code>"Java".charAt(1)</code></td><td>Char by index</td></tr>
+              <tr><td><code>indexOf()</code></td><td><code>"hello".indexOf("e")</code></td><td>First index</td></tr>
+              <tr><td><code>lastIndexOf()</code></td><td><code>"hello".lastIndexOf("l")</code></td><td>Last index</td></tr>
+              <tr><td><code>concat()</code></td><td><code>"A".concat("B")</code></td><td>Join strings</td></tr>
+              <tr><td><code>startsWith()</code></td><td><code>"Java".startsWith("Ja")</code></td><td>Prefix check</td></tr>
+              <tr><td><code>includes()</code></td><td><code>"Java".includes("av")</code></td><td>Contains check</td></tr>
+              <tr><td><code>endsWith()</code></td><td><code>"Java".endsWith("va")</code></td><td>Suffix check</td></tr>
+              <tr><td><code>toLowerCase()</code></td><td><code>"JS".toLowerCase()</code></td><td>Lowercase</td></tr>
+              <tr><td><code>toUpperCase()</code></td><td><code>"js".toUpperCase()</code></td><td>Uppercase</td></tr>
+              <tr><td><code>trim()</code></td><td><code>"  hi  ".trim()</code></td><td>Remove edge spaces</td></tr>
+              <tr><td><code>substring()</code></td><td><code>"JavaScript".substring(0,4)</code></td><td>Part of string</td></tr>
+              <tr><td><code>slice()</code></td><td><code>"JavaScript".slice(-6)</code></td><td>Slice incl. negative index</td></tr>
+              <tr><td><code>repeat()</code></td><td><code>"ha".repeat(3)</code></td><td>Repeat string N times</td></tr>
+              <tr><td><code>replace()</code></td><td><code>"JS basics".replace("basics","advanced")</code></td><td>Replace first match</td></tr>
+              <tr><td><code>split()</code></td><td><code>"a,b,c".split(",")</code></td><td>Convert string to array</td></tr>
+              <tr><td><code>charCodeAt()</code></td><td><code>"A".charCodeAt(0)</code></td><td>Unicode/UTF-16 code of char</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre><code>const text = "  JavaScript  ";
+console.log(text.trim().toUpperCase()); // JAVASCRIPT
+console.log("JavaScript".slice(-6));    // Script
+console.log("JavaScript".substring(0,4)); // Java
+console.log("ha".repeat(3));              // hahaha
+console.log("A".charCodeAt(0));           // 65</code></pre>
+        <button class="btn" id="runStringMethodsDemo">Show String Methods Output</button>
+        <div class="output" id="stringMethodsOutput">Click "Show String Methods Output"</div>
+
+        <div class="warning">
+          <strong>substring vs slice:</strong> <code>substring()</code> does not support negative indexes,
+          but <code>slice()</code> supports negative indexes.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>32) Arrays in JavaScript</summary>
+        <p>An <strong>array</strong> stores multiple values in a single container. JavaScript arrays can hold both same-type and mixed-type values.</p>
+        <pre><code>let nums = [1, 2, 3, 4];                     // homogeneous style
+let mixed = [1, "hi", true, null, [1, 2]];  // heterogeneous style</code></pre>
+
+        <h3>Ways to Create Array</h3>
+        <ul>
+          <li>Array literal: <code>let a = [10, 20, 30];</code></li>
+          <li>Using constructor: <code>let b = new Array(10, 20, 30);</code></li>
+        </ul>
+
+        <button class="btn" id="runArrayBasicsDemo">Show Array Basics Output</button>
+        <div class="output" id="arrayBasicsOutput">Click "Show Array Basics Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>A = Ordered + Indexed + Resizable</code>.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>33) Array Methods (Core Interview Set)</summary>
+        <p>These are the most asked array methods in interviews. Know which methods mutate the original array.</p>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+                <th>Mutates Original?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>length</code></td><td>Get count of elements</td><td>No</td></tr>
+              <tr><td><code>indexOf()</code></td><td>First index of value</td><td>No</td></tr>
+              <tr><td><code>lastIndexOf()</code></td><td>Last index of value</td><td>No</td></tr>
+              <tr><td><code>concat()</code></td><td>Join arrays and return new one</td><td>No</td></tr>
+              <tr><td><code>push()</code></td><td>Add element at end</td><td>Yes</td></tr>
+              <tr><td><code>pop()</code></td><td>Remove element from end</td><td>Yes</td></tr>
+              <tr><td><code>unshift()</code></td><td>Add element at start</td><td>Yes</td></tr>
+              <tr><td><code>shift()</code></td><td>Remove element from start</td><td>Yes</td></tr>
+              <tr><td><code>splice()</code></td><td>Add/remove at any index</td><td>Yes</td></tr>
+              <tr><td><code>slice()</code></td><td>Copy part of array</td><td>No</td></tr>
+              <tr><td><code>reverse()</code></td><td>Reverse order</td><td>Yes</td></tr>
+              <tr><td><code>join()</code></td><td>Convert to string</td><td>No</td></tr>
+              <tr><td><code>flat()</code></td><td>Flatten nested arrays</td><td>No</td></tr>
+              <tr><td><code>map()</code></td><td>Transform each item</td><td>No</td></tr>
+              <tr><td><code>forEach()</code></td><td>Iterate each item</td><td>No</td></tr>
+              <tr><td><code>filter()</code></td><td>Keep matched items</td><td>No</td></tr>
+              <tr><td><code>reduce()</code></td><td>Accumulate to single result</td><td>No</td></tr>
+              <tr><td><code>find()</code></td><td>Return first matched element</td><td>No</td></tr>
+              <tr><td><code>findIndex()</code></td><td>Return first matched index</td><td>No</td></tr>
+              <tr><td><code>some()</code></td><td>True if any element matches</td><td>No</td></tr>
+              <tr><td><code>every()</code></td><td>True if all elements match</td><td>No</td></tr>
+              <tr><td><code>sort()</code></td><td>Sort elements</td><td>Yes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Most Important: <code>forEach</code> vs <code>map</code> vs <code>filter</code> vs <code>reduce</code></h3>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Returns</th>
+                <th>When to Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>forEach()</code></td>
+                <td><code>undefined</code></td>
+                <td>Only iterate and do side effects (log, update UI, push manually).</td>
+              </tr>
+              <tr>
+                <td><code>map()</code></td>
+                <td>New array (same length)</td>
+                <td>Transform each element (e.g., multiply, format, project).</td>
+              </tr>
+              <tr>
+                <td><code>filter()</code></td>
+                <td>New array (same or smaller length)</td>
+                <td>Keep only elements that satisfy condition.</td>
+              </tr>
+              <tr>
+                <td><code>reduce()</code></td>
+                <td>Single value (or custom result)</td>
+                <td>Accumulate values (sum, total, group, flatten).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <pre><code>const nums = [1, 2, 3, 4, 5];
+nums.forEach((n) => console.log(n));        // iterate only
+const doubled = nums.map((n) => n * 2);     // [2,4,6,8,10]
+const even = nums.filter((n) => n % 2 === 0); // [2,4]
+const total = nums.reduce((a, b) => a + b, 0); // 15</code></pre>
+
+        <button class="btn" id="runArrayMethodsDemo">Show Array Methods Output</button>
+        <div class="output" id="arrayMethodsOutput">Click "Show Array Methods Output"</div>
+        <button class="btn" id="runArrayHofDemo">Show forEach/map/filter/reduce Output</button>
+        <div class="output" id="arrayHofOutput">Click "Show forEach/map/filter/reduce Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>34) <code>Array.isArray()</code>, <code>Array.from()</code>, <code>for...of</code>, <code>for...in</code></summary>
+        <ul>
+          <li><code>Array.isArray(value)</code>: checks if value is a true array.</li>
+          <li><code>Array.from(iterable/array-like)</code>: converts array-like or iterable to real array.</li>
+          <li><code>for...of</code>: iterates values.</li>
+          <li><code>for...in</code>: iterates keys/indexes.</li>
+        </ul>
+        <pre><code>for (const val of arr) { console.log(val); }   // values
+for (const i in arr) { console.log(i); }       // indexes</code></pre>
+        <button class="btn" id="runArrayUtilityDemo">Show Utility Output</button>
+        <div class="output" id="arrayUtilityOutput">Click "Show Utility Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>35) Rest Parameters, Spread Operator, and <code>arguments</code> Object</summary>
+        <h3>Rest Parameter <code>...args</code></h3>
+        <ul>
+          <li>Collects indefinite arguments into a <strong>real array</strong>.</li>
+          <li>Must be the last formal parameter.</li>
+        </ul>
+        <pre><code>function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0);
+}</code></pre>
+
+        <h3>Spread Operator <code>...</code></h3>
+        <ul>
+          <li>Expands array/object values into individual values.</li>
+          <li>Common use: copy/merge arrays and objects.</li>
+        </ul>
+        <pre><code>const a = [1, 2];
+const b = [...a, 3, 4];</code></pre>
+
+        <h3><code>arguments</code> Object</h3>
+        <ul>
+          <li>Available in normal functions (not arrow functions).</li>
+          <li>Array-like object, not a pure array.</li>
+        </ul>
+
+        <button class="btn" id="runRestSpreadDemo">Show Rest/Spread Output</button>
+        <div class="output" id="restSpreadOutput">Click "Show Rest/Spread Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>36) Objects in JavaScript</summary>
+        <p>An object is a collection of key-value pairs representing properties (state) and methods (behavior).</p>
+        <pre><code>const user = {
+  name: "Sam",
+  age: 21,
+  greet() {
+    return "Hello";
+  }
+};</code></pre>
+
+        <h3>Important Object Methods</h3>
+        <p><code>Object.keys()</code>, <code>Object.values()</code>, <code>Object.entries()</code>, <code>Object.freeze()</code>, <code>Object.isFrozen()</code>, <code>Object.seal()</code>, <code>Object.isSealed()</code>, <code>Object.create()</code>, <code>Object.assign()</code></p>
+        <button class="btn" id="runObjectDemo">Show Object Output</button>
+        <div class="output" id="objectOutput">Click "Show Object Output"</div>
+
+        <h3>Object Destructuring (ES6)</h3>
+        <p>Object destructuring extracts object properties into variables in a clean and readable way.</p>
+        <ul>
+          <li>Direct extraction: <code>const { name } = user;</code></li>
+          <li>Rename variable: <code>const { name: fullName } = user;</code></li>
+          <li>Default value: <code>const { city = "Unknown" } = user;</code></li>
+          <li>Nested extraction: <code>const { address: { pin } } = user;</code></li>
+          <li>Rest properties: <code>const { age, ...rest } = user;</code></li>
+        </ul>
+        <pre><code>const user = {
+  name: "Ravi",
+  age: 24,
+  company: "Meta",
+  address: { city: "Pune", pin: 411001 }
+};
+
+const { name, age, address: { city }, salary = 0 } = user;
+const { name: fullName, ...others } = user;</code></pre>
+        <button class="btn" id="runObjectDestructureDemo">Show Object Destructuring Output</button>
+        <div class="output" id="objectDestructureOutput">Click "Show Object Destructuring Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>37) Date Object</summary>
+        <p>Date object handles date/time values in JavaScript.</p>
+        <pre><code>const now = new Date();
+console.log(now.toISOString());</code></pre>
+        <button class="btn" id="runDateDemo">Show Date Output</button>
+        <div class="output" id="dateOutput">Click "Show Date Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>38) JSON Object</summary>
+        <p><strong>JSON</strong> (JavaScript Object Notation) is a data format used to store/transport data between client and server.</p>
+        <ul>
+          <li><code>JSON.stringify(jsObject)</code>: converts JS object to JSON string.</li>
+          <li><code>JSON.parse(jsonString)</code>: converts JSON string back to JS object.</li>
+        </ul>
+        <pre><code>const userDetails = { name: "Amogh", company: "Meta", sal: 12345, city: "Pune" };
+const x = JSON.stringify(userDetails);
+const y = JSON.parse(x);</code></pre>
+        <button class="btn" id="runJsonDemo">Show JSON Output</button>
+        <div class="output" id="jsonOutput">Click "Show JSON Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>39) Web Storage: Local Storage vs Session Storage</summary>
+        <p>Web storage stores key-value data in browser.</p>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>localStorage</th>
+                <th>sessionStorage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lifetime</td>
+                <td>Persists until removed</td>
+                <td>Cleared when tab/session closes</td>
+              </tr>
+              <tr>
+                <td>Approx Capacity</td>
+                <td>~5-10 MB (browser-dependent)</td>
+                <td>~5 MB (browser-dependent)</td>
+              </tr>
+              <tr>
+                <td>Methods</td>
+                <td><code>setItem/getItem/removeItem/clear</code></td>
+                <td><code>setItem/getItem/removeItem/clear</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn" id="runStorageDemo">Show Storage Output</button>
+        <div class="output" id="storageOutput">Click "Show Storage Output"</div>
+      </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>40) DOM Advanced Methods and Dynamic Elements</summary>
+        <p>DOM (Document Object Model) is a Web API to read/update HTML elements.</p>
+        <ul>
+          <li><code>getElementById()</code></li>
+          <li><code>getElementsByClassName()</code></li>
+          <li><code>getElementsByTagName()</code></li>
+          <li><code>getElementsByName()</code></li>
+          <li><code>querySelector()</code></li>
+          <li><code>querySelectorAll()</code></li>
+        </ul>
+
+        <h3>Content Properties</h3>
+        <ul>
+          <li><code>innerText</code>: only text content.</li>
+          <li><code>innerHTML</code>: text + HTML markup.</li>
+        </ul>
+
+        <h3>Dynamic Element Creation</h3>
+        <pre><code>const li = document.createElement("li");
+li.innerText = "New Item";
+list.appendChild(li);</code></pre>
+        <button class="btn" id="runDomAdvancedDemo">Run DOM Advanced Demo</button>
+        <div class="output" id="domAdvancedOutput">Click "Run DOM Advanced Demo"</div>
+        <ul id="dynamicDomList"></ul>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>41) Events in JavaScript</summary>
+        <p>Event means user/browser action: click, mouse action, keyboard action, submit, etc.</p>
+        <ul>
+          <li><strong>Click events:</strong> <code>click</code>, <code>dblclick</code>, <code>change</code>, <code>submit</code></li>
+          <li><strong>Mouse events:</strong> <code>mouseover</code>, <code>mouseleave</code></li>
+          <li><strong>Key events:</strong> <code>keydown</code>, <code>keyup</code>, <code>keypress</code></li>
+        </ul>
+
+        <div class="two-col">
+          <div>
+            <button class="btn" id="eventClickBtn" type="button">Event Click</button>
+            <input id="eventKeyInput" placeholder="Type here for key events" />
+            <div id="eventHoverBox" class="note">Hover your mouse here</div>
+          </div>
+          <div>
+            <div class="output" id="eventsOutput">Do click / key / hover actions here.</div>
+          </div>
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>42) Asynchronous JavaScript Basics</summary>
+        <p>Asynchronous JavaScript means non-blocking execution: app can continue while waiting for tasks like timer/network.</p>
+        <ul>
+          <li><code>setTimeout()</code>: run once after delay.</li>
+          <li><code>setInterval()</code>: run repeatedly after fixed interval.</li>
+          <li><strong>Callback Hell:</strong> nested callbacks reduce readability and error handling quality.</li>
+        </ul>
+        <button class="btn" id="runAsyncBasicsDemo">Show Async Basics Output</button>
+        <div class="output" id="asyncBasicsOutput">Click "Show Async Basics Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>43) Promises (Detailed)</summary>
+        <p><strong>Promise</strong> is an object used to handle asynchronous operations. It represents a value that may be available now, later, or never.</p>
+
+        <h3>Why Promise?</h3>
+        <ul>
+          <li>Prevents deep callback nesting (callback hell).</li>
+          <li>Gives clear success/failure flow with <code>then</code>/<code>catch</code>.</li>
+          <li>Improves readability and composability of async code.</li>
+        </ul>
+
+        <h3>Promise States</h3>
+        <ul>
+          <li><strong>pending:</strong> initial state, operation is in progress.</li>
+          <li><strong>fulfilled:</strong> operation completed successfully (<code>resolve()</code> called).</li>
+          <li><strong>rejected:</strong> operation failed (<code>reject()</code> called).</li>
+        </ul>
+        <div class="note">
+          <strong>Important:</strong> Fulfilled and Rejected are final states (called <strong>settled</strong> states).
+        </div>
+
+        <div class="tree">
+          <div class="level">
+            <div class="node">Promise: pending</div>
+          </div>
+          <div class="arrow">&#8595;</div>
+          <div class="level">
+            <div class="node">resolve() -> fulfilled</div>
+            <div class="node">reject() -> rejected</div>
+          </div>
+        </div>
+
+        <h3>Basic Syntax</h3>
+        <pre><code>const p = new Promise((resolve, reject) => {
+  // async task
+  if (success) resolve(data);
+  else reject(error);
+});
+
+p.then((data) => {
+  // success
+}).catch((err) => {
+  // failure
+}).finally(() => {
+  // always runs
+});</code></pre>
+
+        <h3>Example 1: Success -> Chaining -> Error -> Recovery</h3>
+        <pre><code>new Promise((resolve) => resolve(10))
+  .then((n) => n * 2)         // 20
+  .then((n) => {
+    if (n === 20) throw new Error("manual error");
+    return n;
+  })
+  .catch((err) => "Recovered: " + err.message)
+  .finally(() => console.log("done"));</code></pre>
+
+        <h3>Example 2: Promise Utility Methods</h3>
+        <ul>
+          <li><code>Promise.all()</code> -> fail fast, all must pass.</li>
+          <li><code>Promise.allSettled()</code> -> gives all results, success/fail both.</li>
+          <li><code>Promise.race()</code> -> first settled promise wins.</li>
+          <li><code>Promise.any()</code> -> first fulfilled promise wins.</li>
+        </ul>
+
+        <button class="btn" id="runPromiseDemo">Show Promise Lifecycle Output</button>
+        <div class="output" id="promiseOutput">Click "Show Promise Lifecycle Output"</div>
+        <button class="btn" id="runPromiseCombinatorDemo">Show Promise Utility Methods Output</button>
+        <div class="output" id="promiseCombinatorOutput">Click "Show Promise Utility Methods Output"</div>
+
+        <div class="memory">
+          <strong>Memory Trick:</strong> <code>P-F-R</code> =
+          <strong>P</strong>ending, <strong>F</strong>ulfilled, <strong>R</strong>ejected.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>44) <code>async</code> and <code>await</code></summary>
+        <ul>
+          <li><code>async</code> makes a function return a promise.</li>
+          <li><code>await</code> pauses inside async function until promise resolves/rejects.</li>
+          <li>Use <code>try/catch</code> for error handling.</li>
+        </ul>
+        <pre><code>async function loadData() {
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+}</code></pre>
+        <button class="btn" id="runAsyncAwaitDemo">Show Async/Await Output</button>
+        <div class="output" id="asyncAwaitOutput">Click "Show Async/Await Output"</div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>45) How to Fetch API from Server (3 Practical Examples)</summary>
+        <p>This section gives 3 real fetch patterns you can use in interviews and projects.</p>
+
+        <h3>Example 1: GET Request</h3>
+        <pre><code>const res = await fetch("https://jsonplaceholder.typicode.com/users/1");
+const data = await res.json();</code></pre>
+
+        <h3>Example 2: POST Request</h3>
+        <pre><code>const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ title: "JS Notes", body: "Fetch API", userId: 1 })
+});
+const data = await res.json();</code></pre>
+
+        <h3>Example 3: Parallel API Calls</h3>
+        <pre><code>const [u, p] = await Promise.all([
+  fetch("https://jsonplaceholder.typicode.com/users/1").then(r => r.json()),
+  fetch("https://jsonplaceholder.typicode.com/posts/1").then(r => r.json())
+]);</code></pre>
+
+        <div class="mode-buttons">
+          <button class="mode-btn" id="runFetchGetDemo">Run GET Example</button>
+          <button class="mode-btn" id="runFetchPostDemo">Run POST Example</button>
+          <button class="mode-btn" id="runFetchParallelDemo">Run Parallel Example</button>
+        </div>
+        <div class="output" id="fetchOutput">Run a fetch example to see output.</div>
+
+        <div class="warning">
+          <strong>Interview points:</strong> Check <code>response.ok</code>, handle <code>try/catch</code>,
+          parse using <code>response.json()</code>, and remember CORS can block requests.
+        </div>
+        </details>
+      </section>
+
+      <section class="card">
+        <details>
+          <summary>46) Interview Quick Revision</summary>
+        <ul>
+          <li>JavaScript is high-level, dynamic, and used for browser + server applications.</li>
+          <li>Prefer <code>defer</code> or end-of-body script placement for DOM-safe execution.</li>
+          <li><code>var</code> is function-scoped; <code>let/const</code> are block-scoped.</li>
+          <li>Hoisting: <code>var</code> initializes to undefined; <code>let/const</code> stay in TDZ.</li>
+          <li>7 primitive types: string, number, bigint, boolean, undefined, null, symbol.</li>
+          <li>Arrays hold ordered values and support transformation using <code>map/filter/reduce</code>.</li>
+          <li>Rest collects arguments; spread expands values.</li>
+          <li>Objects use key-value pairs; know <code>keys/values/entries/assign/freeze/seal</code>.</li>
+          <li>Object destructuring extracts properties quickly with rename/default/rest support.</li>
+          <li>JSON conversion: <code>stringify</code> and <code>parse</code>.</li>
+          <li>localStorage is persistent; sessionStorage is session-bound.</li>
+          <li>DOM APIs select/manipulate elements; events connect UI actions to logic.</li>
+          <li>Async tools: timers, promises, async/await, fetch API.</li>
+          <li>Promise states: pending, fulfilled, rejected.</li>
+          <li>Promise handlers: <code>then</code>, <code>catch</code>, <code>finally</code>; utilities: <code>all</code>, <code>allSettled</code>, <code>race</code>, <code>any</code>.</li>
+          <li>Fetch flow: request -> response -> status check -> parse JSON -> render/update UI.</li>
+          <li>Use <code>try/catch</code> and error-first thinking in async code.</li>
         </ul>
 
         <div class="answer">
           <strong>Perfect one-line intro in interview:</strong>
-          "JavaScript is a high-level, dynamically typed language used to build interactive web apps in browsers and scalable backend services with Node.js."
+          "JavaScript is a high-level, prototype-based language that powers interactive UIs, APIs, async workflows, and full-stack web applications."
         </div>
 
-        <p class="footer">You can now send the next photo, and I will continue these notes in the same style in this same file.</p>
+        <p class="footer">Send the next topic/photo and I will extend this same file in the same style.</p>
         </details>
       </section>
     </main>
@@ -1950,6 +2851,892 @@ console.log(Number.MAX_SAFE_INTEGER);</code></pre>
         "Number('abc') -> " + Number("abc"),
         "isNaN(Number('abc')) -> " + isNaN(Number("abc"))
       ].join("\n");
+    });
+
+    const operatorsDemoBtn = document.getElementById("runOperatorsDemo");
+    const operatorsOutput = document.getElementById("operatorsOutput");
+
+    operatorsDemoBtn.addEventListener("click", () => {
+      let a = 10;
+      let b = 3;
+      let x = 5;
+      x += 2;
+
+      const arithmetic = {
+        add: a + b,
+        sub: a - b,
+        mul: a * b,
+        div: a / b,
+        mod: a % b,
+        exp: a ** b
+      };
+
+      let inc = 10;
+      let dec = 10;
+      inc++;
+      dec--;
+
+      const relational = {
+        gt: a > b,
+        eqLoose: a == "10",
+        eqStrict: a === "10"
+      };
+
+      const logical = {
+        and: true && false,
+        or: true || false,
+        not: !true
+      };
+
+      const ternaryResult = a > b ? "a is bigger" : "b is bigger";
+
+      operatorsOutput.textContent = [
+        "Operator Demo Output:",
+        "Arithmetic: + " + arithmetic.add + ", - " + arithmetic.sub + ", * " + arithmetic.mul + ", / " + arithmetic.div,
+        "Modulus: " + arithmetic.mod + ", Exponent: " + arithmetic.exp,
+        "Increment (10++): " + inc + ", Decrement (10--): " + dec,
+        "",
+        "Assignment: x starts 5, after x += 2 -> " + x,
+        "Relational: a > b -> " + relational.gt + ", a == '10' -> " + relational.eqLoose + ", a === '10' -> " + relational.eqStrict,
+        "Logical: true&&false -> " + logical.and + ", true||false -> " + logical.or + ", !true -> " + logical.not,
+        "Ternary: " + ternaryResult
+      ].join("\n");
+    });
+
+    const conditionalDemoBtn = document.getElementById("runConditionalDemo");
+    const conditionalOutput = document.getElementById("conditionalOutput");
+
+    conditionalDemoBtn.addEventListener("click", () => {
+      const marks = 72;
+      let grade;
+
+      if (marks >= 90) {
+        grade = "A";
+      } else if (marks >= 75) {
+        grade = "B";
+      } else {
+        grade = "C";
+      }
+
+      const age = 16;
+      const ageText = age >= 18 ? "Adult" : "Minor";
+
+      const day = 2;
+      let dayName;
+      switch (day) {
+        case 1:
+          dayName = "Monday";
+          break;
+        case 2:
+          dayName = "Tuesday";
+          break;
+        default:
+          dayName = "Invalid";
+      }
+
+      conditionalOutput.textContent = [
+        "Conditional Output:",
+        "marks = " + marks + " -> grade = " + grade + " (else-if ladder)",
+        "age = " + age + " -> " + ageText + " (ternary)",
+        "day = " + day + " -> " + dayName + " (switch)",
+        "",
+        "if statement idea: executes only when condition is true."
+      ].join("\n");
+    });
+
+    const typeCastingDemoBtn = document.getElementById("runTypeCastingDemo");
+    const typeCastingOutput = document.getElementById("typeCastingOutput");
+
+    typeCastingDemoBtn.addEventListener("click", () => {
+      const promptValue = "123";
+      const asNumber = Number(promptValue);
+      const invalidNumber = Number("12px");
+      const asInt = parseInt("99.75px", 10);
+      const asFloat = parseFloat("99.75px");
+      const boolEmpty = Boolean("");
+      const boolText = Boolean("hello");
+
+      typeCastingOutput.textContent = [
+        "Type Casting Output:",
+        "prompt() usually returns string. Example prompt value: \"" + promptValue + "\"",
+        "Number(\"123\") -> " + asNumber + " | typeof: " + typeof asNumber,
+        "Number(\"12px\") -> " + invalidNumber + " (NaN)",
+        "parseInt(\"99.75px\") -> " + asInt,
+        "parseFloat(\"99.75px\") -> " + asFloat,
+        "String(500) -> \"" + String(500) + "\"",
+        "Boolean(\"\") -> " + boolEmpty,
+        "Boolean(\"hello\") -> " + boolText
+      ].join("\n");
+    });
+
+    const loopsDemoBtn = document.getElementById("runLoopsDemo");
+    const loopsOutput = document.getElementById("loopsOutput");
+
+    loopsDemoBtn.addEventListener("click", () => {
+      const forValues = [];
+      for (let i = 1; i <= 3; i++) {
+        forValues.push(i);
+      }
+
+      const whileValues = [];
+      let j = 1;
+      while (j <= 3) {
+        whileValues.push(j);
+        j++;
+      }
+
+      const doWhileValues = [];
+      let k = 5;
+      do {
+        doWhileValues.push(k);
+        k++;
+      } while (k <= 3);
+
+      loopsOutput.textContent = [
+        "Loop Output:",
+        "for loop (1..3): " + forValues.join(", "),
+        "while loop (1..3): " + whileValues.join(", "),
+        "do-while demo (condition false first time): " + doWhileValues.join(", "),
+        "",
+        "Observation: do-while runs at least once."
+      ].join("\n");
+    });
+
+    const jumpDemoBtn = document.getElementById("runJumpDemo");
+    const jumpOutput = document.getElementById("jumpOutput");
+
+    jumpDemoBtn.addEventListener("click", () => {
+      const breakValues = [];
+      for (let i = 1; i <= 10; i++) {
+        if (i === 5) {
+          break;
+        }
+        breakValues.push(i);
+      }
+
+      const continueValues = [];
+      for (let i = 1; i <= 10; i++) {
+        if (i === 5) {
+          continue;
+        }
+        continueValues.push(i);
+      }
+
+      jumpOutput.textContent = [
+        "Jump Statement Output:",
+        "break at 5 -> " + breakValues.join(", "),
+        "continue at 5 -> " + continueValues.join(", ")
+      ].join("\n");
+    });
+
+    const functionBasicDemoBtn = document.getElementById("runFunctionBasicDemo");
+    const functionBasicOutput = document.getElementById("functionBasicOutput");
+
+    functionBasicDemoBtn.addEventListener("click", () => {
+      function add(a, b) {
+        return a + b;
+      }
+
+      function greet(name = "Guest") {
+        return "Hello, " + name;
+      }
+
+      const addResult = add(5, 2);
+      const greetResult = greet("JavaScript");
+
+      functionBasicOutput.textContent = [
+        "Function Basics Output:",
+        "add(5, 2) -> " + addResult,
+        "greet(\"JavaScript\") -> " + greetResult,
+        "",
+        "Parameters: a, b, name",
+        "Arguments: 5, 2, \"JavaScript\""
+      ].join("\n");
+    });
+
+    const functionTypesDemoBtn = document.getElementById("runFunctionTypesDemo");
+    const functionTypesOutput = document.getElementById("functionTypesOutput");
+
+    functionTypesDemoBtn.addEventListener("click", () => {
+      function namedFn() {
+        return "named";
+      }
+
+      const expressionFn = function () {
+        return "expression";
+      };
+
+      const arrowFn = (x) => x * x;
+
+      const iifeValue = (function () {
+        return "IIFE executed once";
+      })();
+
+      function higherOrder(cb) {
+        return cb("callback from HOF");
+      }
+
+      const callbackResult = higherOrder((msg) => "received -> " + msg);
+
+      function* generatorFn() {
+        yield 1;
+        yield 2;
+      }
+      const gen = generatorFn();
+
+      const sumFn = new Function("a", "b", "return a + b;");
+
+      functionTypesOutput.textContent = [
+        "Function Types Output:",
+        "Named function -> " + namedFn(),
+        "Function expression -> " + expressionFn(),
+        "Arrow function sqr(4) -> " + arrowFn(4),
+        "IIFE -> " + iifeValue,
+        "Higher-order + callback -> " + callbackResult,
+        "Generator next values -> " + gen.next().value + ", " + gen.next().value,
+        "Function constructor sumFn(3,4) -> " + sumFn(3, 4)
+      ].join("\n");
+    });
+
+    const returnDemoBtn = document.getElementById("runReturnDemo");
+    const returnOutput = document.getElementById("returnOutput");
+
+    returnDemoBtn.addEventListener("click", () => {
+      function explicitAdd(a, b) {
+        return a + b;
+      }
+
+      const implicitMul = (a, b) => a * b;
+
+      function returnStops() {
+        return "stopped here";
+      }
+
+      returnOutput.textContent = [
+        "Return Output:",
+        "Explicit return explicitAdd(4,5) -> " + explicitAdd(4, 5),
+        "Implicit return implicitMul(4,5) -> " + implicitMul(4, 5),
+        "returnStops() -> " + returnStops(),
+        "",
+        "Point: return sends value back and exits function."
+      ].join("\n");
+    });
+
+    const closureDemoBtn = document.getElementById("runClosureDemo");
+    const closureOutput = document.getElementById("closureOutput");
+
+    closureDemoBtn.addEventListener("click", () => {
+      function outer() {
+        let count = 0;
+        return function inner() {
+          count++;
+          return count;
+        };
+      }
+
+      const counterA = outer();
+      const counterB = outer();
+
+      closureOutput.textContent = [
+        "Closure Output:",
+        "counterA() -> " + counterA(),
+        "counterA() -> " + counterA(),
+        "counterA() -> " + counterA(),
+        "counterB() -> " + counterB(),
+        "",
+        "Each closure keeps its own private state."
+      ].join("\n");
+    });
+
+    const stringMethodsDemoBtn = document.getElementById("runStringMethodsDemo");
+    const stringMethodsOutput = document.getElementById("stringMethodsOutput");
+
+    stringMethodsDemoBtn.addEventListener("click", () => {
+      const text = "  JavaScript  ";
+      const clean = text.trim();
+      const csv = "a,b,c";
+      const replaced = "JS basics".replace("basics", "advanced");
+
+      stringMethodsOutput.textContent = [
+        "String Methods Output:",
+        "\"Java\".length -> " + "Java".length,
+        "\"Java\".charAt(1) -> " + "Java".charAt(1),
+        "\"hello\".indexOf(\"l\") -> " + "hello".indexOf("l"),
+        "\"hello\".lastIndexOf(\"l\") -> " + "hello".lastIndexOf("l"),
+        "\"Ja\".concat(\"va\") -> " + "Ja".concat("va"),
+        "\"JavaScript\".startsWith(\"Java\") -> " + "JavaScript".startsWith("Java"),
+        "\"JavaScript\".includes(\"Script\") -> " + "JavaScript".includes("Script"),
+        "\"JavaScript\".endsWith(\"Script\") -> " + "JavaScript".endsWith("Script"),
+        "\"JS\".toLowerCase() -> " + "JS".toLowerCase(),
+        "\"js\".toUpperCase() -> " + "js".toUpperCase(),
+        "\"  JavaScript  \".trim() -> \"" + clean + "\"",
+        "\"JavaScript\".substring(0,4) -> " + "JavaScript".substring(0, 4),
+        "\"JavaScript\".slice(-6) -> " + "JavaScript".slice(-6),
+        "\"ha\".repeat(3) -> " + "ha".repeat(3),
+        "\"JS basics\".replace(\"basics\",\"advanced\") -> " + replaced,
+        "\"a,b,c\".split(\",\") -> [" + csv.split(",").join(", ") + "]",
+        "\"A\".charCodeAt(0) -> " + "A".charCodeAt(0)
+      ].join("\n");
+    });
+
+    const arrayBasicsDemoBtn = document.getElementById("runArrayBasicsDemo");
+    const arrayBasicsOutput = document.getElementById("arrayBasicsOutput");
+
+    arrayBasicsDemoBtn.addEventListener("click", () => {
+      const nums = [1, 2, 3, 4];
+      const mixed = [1, "hi", true, null, [1, 2]];
+      const usingNew = new Array(10, 20, 30);
+
+      arrayBasicsOutput.textContent = [
+        "Array Basics Output:",
+        "nums -> [" + nums.join(", ") + "] | length: " + nums.length,
+        "mixed -> [1, \"hi\", true, null, [1,2]]",
+        "new Array(10,20,30) -> [" + usingNew.join(", ") + "]",
+        "",
+        "Point: JavaScript arrays can store mixed datatypes."
+      ].join("\n");
+    });
+
+    const arrayMethodsDemoBtn = document.getElementById("runArrayMethodsDemo");
+    const arrayMethodsOutput = document.getElementById("arrayMethodsOutput");
+
+    arrayMethodsDemoBtn.addEventListener("click", () => {
+      const base = [10, 20, 30];
+      const pushed = [...base];
+      pushed.push(40);
+      const popped = [...pushed];
+      popped.pop();
+      const unshifted = [...base];
+      unshifted.unshift(5);
+      const shifted = [...unshifted];
+      shifted.shift();
+      const spliced = [1, 2, 3, 4];
+      spliced.splice(1, 2, 99, 100);
+      const sliced = [1, 2, 3, 4].slice(1, 3);
+      const reversed = [1, 2, 3].reverse();
+      const joined = ["js", "notes"].join("-");
+      const flattened = [1, [2, [3]]].flat(2);
+      const mapped = [1, 2, 3].map((n) => n * 2);
+      const filtered = [1, 2, 3, 4, 5].filter((n) => n % 2 === 0);
+      const reduced = [1, 2, 3, 4].reduce((sum, n) => sum + n, 0);
+      const concatArr = [1, 2].concat([3, 4]);
+      const index = [10, 20, 10].indexOf(10);
+      const lastIndex = [10, 20, 10].lastIndexOf(10);
+      const found = [5, 10, 15, 20].find((n) => n > 12);
+      const foundIndex = [5, 10, 15, 20].findIndex((n) => n > 12);
+      const someCheck = [5, 10, 15, 20].some((n) => n > 18);
+      const everyCheck = [5, 10, 15, 20].every((n) => n > 0);
+      const sorted = [30, 2, 100, 15].sort((a, b) => a - b);
+      const forEachCollected = [];
+      [1, 2, 3].forEach((n) => forEachCollected.push(n + 1));
+
+      arrayMethodsOutput.textContent = [
+        "Array Methods Output:",
+        "push -> [" + pushed.join(", ") + "]",
+        "pop -> [" + popped.join(", ") + "]",
+        "unshift -> [" + unshifted.join(", ") + "]",
+        "shift -> [" + shifted.join(", ") + "]",
+        "splice -> [" + spliced.join(", ") + "]",
+        "slice(1,3) -> [" + sliced.join(", ") + "]",
+        "reverse -> [" + reversed.join(", ") + "]",
+        "concat -> [" + concatArr.join(", ") + "]",
+        "join('-') -> " + joined,
+        "flat(2) -> [" + flattened.join(", ") + "]",
+        "map(x2) -> [" + mapped.join(", ") + "]",
+        "filter(even) -> [" + filtered.join(", ") + "]",
+        "reduce(sum) -> " + reduced,
+        "forEach(+1 collect) -> [" + forEachCollected.join(", ") + "]",
+        "find(>12) -> " + found,
+        "findIndex(>12) -> " + foundIndex,
+        "some(>18) -> " + someCheck,
+        "every(>0) -> " + everyCheck,
+        "sort(asc) -> [" + sorted.join(", ") + "]",
+        "indexOf(10) -> " + index + ", lastIndexOf(10) -> " + lastIndex,
+        "length of base -> " + base.length
+      ].join("\n");
+    });
+
+    const arrayHofDemoBtn = document.getElementById("runArrayHofDemo");
+    const arrayHofOutput = document.getElementById("arrayHofOutput");
+
+    arrayHofDemoBtn.addEventListener("click", () => {
+      const nums = [1, 2, 3, 4, 5];
+      const forEachCollected = [];
+      nums.forEach((n) => forEachCollected.push("item-" + n));
+      const mapped = nums.map((n) => n * 10);
+      const filtered = nums.filter((n) => n % 2 === 0);
+      const reduced = nums.reduce((acc, n) => acc + n, 0);
+
+      arrayHofOutput.textContent = [
+        "forEach/map/filter/reduce Output:",
+        "Original nums -> [" + nums.join(", ") + "]",
+        "forEach (side effect collect) -> [" + forEachCollected.join(", ") + "]",
+        "map (transform x10) -> [" + mapped.join(", ") + "]",
+        "filter (even only) -> [" + filtered.join(", ") + "]",
+        "reduce (sum) -> " + reduced,
+        "",
+        "Interview rule:",
+        "forEach = iterate, map = transform, filter = select, reduce = accumulate."
+      ].join("\n");
+    });
+
+    const arrayUtilityDemoBtn = document.getElementById("runArrayUtilityDemo");
+    const arrayUtilityOutput = document.getElementById("arrayUtilityOutput");
+
+    arrayUtilityDemoBtn.addEventListener("click", () => {
+      const arr = [11, 22, 33];
+      const notArr = { 0: "a", 1: "b", length: 2 };
+      const converted = Array.from(notArr);
+      const values = [];
+      const indexes = [];
+
+      for (const val of arr) {
+        values.push(val);
+      }
+      for (const idx in arr) {
+        indexes.push(idx);
+      }
+
+      arrayUtilityOutput.textContent = [
+        "Array Utility Output:",
+        "Array.isArray(arr) -> " + Array.isArray(arr),
+        "Array.isArray(notArr) -> " + Array.isArray(notArr),
+        "Array.from(arrayLike) -> [" + converted.join(", ") + "]",
+        "for...of values -> [" + values.join(", ") + "]",
+        "for...in indexes -> [" + indexes.join(", ") + "]"
+      ].join("\n");
+    });
+
+    const restSpreadDemoBtn = document.getElementById("runRestSpreadDemo");
+    const restSpreadOutput = document.getElementById("restSpreadOutput");
+
+    restSpreadDemoBtn.addEventListener("click", () => {
+      function sumAll(...nums) {
+        return nums.reduce((a, b) => a + b, 0);
+      }
+
+      const src = [1, 2, 3];
+      const copied = [...src];
+      const merged = [...src, 4, 5];
+
+      function normalFn() {
+        return "arguments length -> " + arguments.length + ", first -> " + arguments[0];
+      }
+
+      restSpreadOutput.textContent = [
+        "Rest/Spread Output:",
+        "sumAll(1,2,3,4) using rest -> " + sumAll(1, 2, 3, 4),
+        "spread copy [...src] -> [" + copied.join(", ") + "]",
+        "spread merge [...src,4,5] -> [" + merged.join(", ") + "]",
+        normalFn("JS", "Notes", 2026),
+        "Array.isArray(arguments) in normal function -> false (array-like)"
+      ].join("\n");
+    });
+
+    const objectDemoBtn = document.getElementById("runObjectDemo");
+    const objectOutput = document.getElementById("objectOutput");
+
+    objectDemoBtn.addEventListener("click", () => {
+      const user = { name: "Sam", age: 21 };
+      const keys = Object.keys(user);
+      const values = Object.values(user);
+      const entries = Object.entries(user);
+
+      const frozen = Object.freeze({ x: 1 });
+      const sealed = Object.seal({ y: 2 });
+      const fromProto = Object.create({ role: "student" });
+      fromProto.name = "Asha";
+      const assigned = Object.assign({}, user, { city: "Pune" });
+
+      objectOutput.textContent = [
+        "Object Output:",
+        "Object.keys(user) -> [" + keys.join(", ") + "]",
+        "Object.values(user) -> [" + values.join(", ") + "]",
+        "Object.entries(user) -> " + JSON.stringify(entries),
+        "Object.isFrozen(frozen) -> " + Object.isFrozen(frozen),
+        "Object.isSealed(sealed) -> " + Object.isSealed(sealed),
+        "Object.create proto role -> " + fromProto.role,
+        "Object.assign({}, user, {city:'Pune'}) -> " + JSON.stringify(assigned)
+      ].join("\n");
+    });
+
+    const objectDestructureDemoBtn = document.getElementById("runObjectDestructureDemo");
+    const objectDestructureOutput = document.getElementById("objectDestructureOutput");
+
+    objectDestructureDemoBtn.addEventListener("click", () => {
+      const user = {
+        name: "Ravi",
+        age: 24,
+        company: "Meta",
+        address: { city: "Pune", pin: 411001 }
+      };
+
+      const { name, age, address: { city }, salary = 0 } = user;
+      const { name: fullName, ...others } = user;
+
+      function printUser({ name: n, company, address: { pin } }) {
+        return n + " works at " + company + " (pin: " + pin + ")";
+      }
+
+      objectDestructureOutput.textContent = [
+        "Object Destructuring Output:",
+        "name -> " + name,
+        "age -> " + age,
+        "nested city -> " + city,
+        "default salary -> " + salary,
+        "renamed name (fullName) -> " + fullName,
+        "rest object (others) -> " + JSON.stringify(others),
+        "function param destructuring -> " + printUser(user)
+      ].join("\n");
+    });
+
+    const dateDemoBtn = document.getElementById("runDateDemo");
+    const dateOutput = document.getElementById("dateOutput");
+
+    dateDemoBtn.addEventListener("click", () => {
+      const now = new Date();
+
+      dateOutput.textContent = [
+        "Date Output:",
+        "toString() -> " + now.toString(),
+        "toISOString() -> " + now.toISOString(),
+        "Year -> " + now.getFullYear(),
+        "Month (0-based) -> " + now.getMonth(),
+        "Date -> " + now.getDate(),
+        "Hours -> " + now.getHours(),
+        "Minutes -> " + now.getMinutes(),
+        "Milliseconds since 1970 -> " + now.getTime()
+      ].join("\n");
+    });
+
+    const jsonDemoBtn = document.getElementById("runJsonDemo");
+    const jsonOutput = document.getElementById("jsonOutput");
+
+    jsonDemoBtn.addEventListener("click", () => {
+      const userDetails = {
+        name: "Amogh",
+        company: "Meta",
+        sal: 12345,
+        city: "Pune"
+      };
+
+      const jsonStr = JSON.stringify(userDetails);
+      const parsed = JSON.parse(jsonStr);
+
+      jsonOutput.textContent = [
+        "JSON Output:",
+        "JS Object -> " + JSON.stringify(userDetails),
+        "JSON.stringify(...) -> " + jsonStr,
+        "typeof JSON string -> " + typeof jsonStr,
+        "JSON.parse(...) -> " + JSON.stringify(parsed),
+        "typeof parsed object -> " + typeof parsed
+      ].join("\n");
+    });
+
+    const storageDemoBtn = document.getElementById("runStorageDemo");
+    const storageOutput = document.getElementById("storageOutput");
+
+    storageDemoBtn.addEventListener("click", () => {
+      try {
+        localStorage.setItem("jsNotesKey", "localValue");
+        sessionStorage.setItem("jsNotesKey", "sessionValue");
+        const lVal = localStorage.getItem("jsNotesKey");
+        const sVal = sessionStorage.getItem("jsNotesKey");
+        localStorage.removeItem("jsNotesKey");
+        sessionStorage.removeItem("jsNotesKey");
+
+        storageOutput.textContent = [
+          "Web Storage Output:",
+          "localStorage set/get -> " + lVal,
+          "sessionStorage set/get -> " + sVal,
+          "localStorage removed key -> " + String(localStorage.getItem("jsNotesKey")),
+          "sessionStorage removed key -> " + String(sessionStorage.getItem("jsNotesKey"))
+        ].join("\n");
+      } catch (err) {
+        storageOutput.textContent = "Storage API not available in this environment: " + err.message;
+      }
+    });
+
+    const domAdvancedDemoBtn = document.getElementById("runDomAdvancedDemo");
+    const domAdvancedOutput = document.getElementById("domAdvancedOutput");
+    const dynamicDomList = document.getElementById("dynamicDomList");
+
+    domAdvancedDemoBtn.addEventListener("click", () => {
+      const byId = document.getElementById("demo");
+      const byClass = document.getElementsByClassName("card").length;
+      const byTag = document.getElementsByTagName("section").length;
+      const q1 = document.querySelector(".hero h1");
+      const qAll = document.querySelectorAll("main .card").length;
+
+      const item = document.createElement("li");
+      item.innerText = "Dynamic item created at " + new Date().toLocaleTimeString();
+      dynamicDomList.appendChild(item);
+
+      domAdvancedOutput.textContent = [
+        "DOM Advanced Output:",
+        "getElementById('demo') found -> " + Boolean(byId),
+        "getElementsByClassName('card').length -> " + byClass,
+        "getElementsByTagName('section').length -> " + byTag,
+        "querySelector('.hero h1') -> " + (q1 ? q1.textContent : "not found"),
+        "querySelectorAll('main .card').length -> " + qAll,
+        "appendChild -> one <li> added to dynamic list"
+      ].join("\n");
+    });
+
+    const eventClickBtn = document.getElementById("eventClickBtn");
+    const eventKeyInput = document.getElementById("eventKeyInput");
+    const eventHoverBox = document.getElementById("eventHoverBox");
+    const eventsOutput = document.getElementById("eventsOutput");
+    let eventClickCount = 0;
+
+    eventClickBtn.addEventListener("click", () => {
+      eventClickCount += 1;
+      eventsOutput.textContent = "Click event fired. Count = " + eventClickCount;
+    });
+
+    eventKeyInput.addEventListener("keydown", (e) => {
+      eventsOutput.textContent = "Keydown event: key = " + e.key;
+    });
+
+    eventHoverBox.addEventListener("mouseover", () => {
+      eventHoverBox.style.background = "#dcfce7";
+      eventsOutput.textContent = "Mouseover event fired.";
+    });
+
+    eventHoverBox.addEventListener("mouseleave", () => {
+      eventHoverBox.style.background = "#ebfffc";
+      eventsOutput.textContent = "Mouseleave event fired.";
+    });
+
+    const asyncBasicsDemoBtn = document.getElementById("runAsyncBasicsDemo");
+    const asyncBasicsOutput = document.getElementById("asyncBasicsOutput");
+    let asyncIntervalId = null;
+
+    asyncBasicsDemoBtn.addEventListener("click", () => {
+      if (asyncIntervalId !== null) {
+        clearInterval(asyncIntervalId);
+        asyncIntervalId = null;
+      }
+
+      asyncBasicsOutput.textContent = "Start (sync line)\nScheduling setTimeout + setInterval...";
+
+      setTimeout(() => {
+        asyncBasicsOutput.textContent += "\nsetTimeout executed after ~700ms";
+      }, 700);
+
+      let tick = 0;
+      asyncIntervalId = setInterval(() => {
+        tick += 1;
+        asyncBasicsOutput.textContent += "\nsetInterval tick " + tick;
+        if (tick === 3) {
+          clearInterval(asyncIntervalId);
+          asyncIntervalId = null;
+          asyncBasicsOutput.textContent += "\nInterval cleared after 3 ticks";
+          asyncBasicsOutput.textContent += "\nCallback hell means deeply nested callbacks.";
+        }
+      }, 350);
+    });
+
+    const promiseDemoBtn = document.getElementById("runPromiseDemo");
+    const promiseOutput = document.getElementById("promiseOutput");
+
+    promiseDemoBtn.addEventListener("click", () => {
+      promiseOutput.textContent = [
+        "Promise Lifecycle Demo:",
+        "state -> pending",
+        "executor started..."
+      ].join("\n");
+
+      const lifecyclePromise = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ message: "data received", count: 10 });
+        }, 700);
+      });
+
+      lifecyclePromise
+        .then((data) => {
+          promiseOutput.textContent += "\nstate -> fulfilled";
+          promiseOutput.textContent += "\nthen #1 -> " + JSON.stringify(data);
+          return data.count * 2;
+        })
+        .then((value) => {
+          promiseOutput.textContent += "\nthen #2 transformed value -> " + value;
+          throw new Error("manual error after transform");
+        })
+        .catch((err) => {
+          promiseOutput.textContent += "\nstate -> rejected (in chain)";
+          promiseOutput.textContent += "\ncatch() -> " + err.message;
+          return "Recovered value";
+        })
+        .then((recovered) => {
+          promiseOutput.textContent += "\nthen after catch -> " + recovered;
+        })
+        .finally(() => {
+          promiseOutput.textContent += "\nfinally() -> always runs";
+        });
+    });
+
+    const promiseCombinatorDemoBtn = document.getElementById("runPromiseCombinatorDemo");
+    const promiseCombinatorOutput = document.getElementById("promiseCombinatorOutput");
+
+    promiseCombinatorDemoBtn.addEventListener("click", async () => {
+      function task(name, delay, shouldFail) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (shouldFail) {
+              reject(new Error(name + " failed"));
+            } else {
+              resolve(name + " success");
+            }
+          }, delay);
+        });
+      }
+
+      promiseCombinatorOutput.textContent = "Running Promise utility methods...";
+
+      try {
+        const allResult = await Promise.all([
+          task("A", 300, false),
+          task("B", 500, false)
+        ]);
+
+        const allSettledResult = await Promise.allSettled([
+          task("C", 250, false),
+          task("D", 350, true)
+        ]);
+
+        const raceResult = await Promise.race([
+          task("E", 450, false),
+          task("F", 200, false)
+        ]);
+
+        let anyResult;
+        if (typeof Promise.any === "function") {
+          anyResult = await Promise.any([
+            task("G", 200, true),
+            task("H", 300, false)
+          ]);
+        } else {
+          anyResult = "Promise.any not supported in this browser";
+        }
+
+        promiseCombinatorOutput.textContent = [
+          "Promise Utility Methods Output:",
+          "Promise.all -> " + JSON.stringify(allResult),
+          "Promise.allSettled -> " + JSON.stringify(allSettledResult),
+          "Promise.race -> " + raceResult,
+          "Promise.any -> " + anyResult
+        ].join("\n");
+      } catch (err) {
+        promiseCombinatorOutput.textContent = "Combinator demo error: " + err.message;
+      }
+    });
+
+    const asyncAwaitDemoBtn = document.getElementById("runAsyncAwaitDemo");
+    const asyncAwaitOutput = document.getElementById("asyncAwaitOutput");
+
+    asyncAwaitDemoBtn.addEventListener("click", async () => {
+      function fakeApi(value, delay) {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(value), delay);
+        });
+      }
+
+      asyncAwaitOutput.textContent = "Async function started...";
+      try {
+        const user = await fakeApi("User loaded", 500);
+        asyncAwaitOutput.textContent += "\nawait 1 -> " + user;
+        const posts = await fakeApi("Posts loaded", 500);
+        asyncAwaitOutput.textContent += "\nawait 2 -> " + posts;
+        asyncAwaitOutput.textContent += "\nDone without callback nesting.";
+      } catch (err) {
+        asyncAwaitOutput.textContent += "\nError: " + err.message;
+      }
+    });
+
+    const fetchGetDemoBtn = document.getElementById("runFetchGetDemo");
+    const fetchPostDemoBtn = document.getElementById("runFetchPostDemo");
+    const fetchParallelDemoBtn = document.getElementById("runFetchParallelDemo");
+    const fetchOutput = document.getElementById("fetchOutput");
+
+    fetchGetDemoBtn.addEventListener("click", async () => {
+      fetchOutput.textContent = "GET example loading...";
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/users/1");
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+        const data = await res.json();
+        fetchOutput.textContent = [
+          "GET Example Success:",
+          "status -> " + res.status,
+          "id -> " + data.id,
+          "name -> " + data.name,
+          "email -> " + data.email
+        ].join("\n");
+      } catch (err) {
+        fetchOutput.textContent = "GET Example Error: " + err.message;
+      }
+    });
+
+    fetchPostDemoBtn.addEventListener("click", async () => {
+      fetchOutput.textContent = "POST example loading...";
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            title: "JS Notes",
+            body: "Fetch API POST",
+            userId: 1
+          })
+        });
+
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+
+        const data = await res.json();
+        fetchOutput.textContent = [
+          "POST Example Success:",
+          "status -> " + res.status,
+          "id -> " + data.id,
+          "title -> " + data.title
+        ].join("\n");
+      } catch (err) {
+        fetchOutput.textContent = "POST Example Error: " + err.message;
+      }
+    });
+
+    fetchParallelDemoBtn.addEventListener("click", async () => {
+      fetchOutput.textContent = "Parallel fetch loading...";
+      try {
+        const [user, post] = await Promise.all([
+          fetch("https://jsonplaceholder.typicode.com/users/1").then((r) => {
+            if (!r.ok) {
+              throw new Error("User request failed: HTTP " + r.status);
+            }
+            return r.json();
+          }),
+          fetch("https://jsonplaceholder.typicode.com/posts/1").then((r) => {
+            if (!r.ok) {
+              throw new Error("Post request failed: HTTP " + r.status);
+            }
+            return r.json();
+          })
+        ]);
+
+        fetchOutput.textContent = [
+          "Parallel Fetch Success:",
+          "user.name -> " + user.name,
+          "post.title -> " + post.title,
+          "Total requests resolved -> 2"
+        ].join("\n");
+      } catch (err) {
+        fetchOutput.textContent = "Parallel Fetch Error: " + err.message;
+      }
     });
 
     const writeBtn = document.getElementById("runWriteExample");
